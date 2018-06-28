@@ -1,1 +1,5 @@
-require('bootstrap/dist/css/bootstrap.min.css')
+require('bootstrap/dist/css/bootstrap.min.css');
+const Controller = require("./Controller");
+
+Controller.start();
+

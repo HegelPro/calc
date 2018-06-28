@@ -19,17 +19,33 @@
           <form class="d-flex flex-column justify-content-center">
               <div class="row">
                 <div class="col-lg-12">
-                  <ul class="calc__history text-right"></ul>
+                    
+                  <ul data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example calc__history">
+                    <li>lkdkglj</li>
+                    <li>lkdkglj</li>
+
+                    <li>lkdkglj</li>
+                    <li>lkdkglj</li>
+                    <li>lkdkglj</li>
+                    <li>lkdkglj</li>
+                    <li>lkdkglj</li>
+                    <li>lkdkglj</li>
+                    <li>lkdkglj</li>
+                    <li>lkdkglj</li>
+                    <li>lkdkglj</li>
+                    <li>lkdkglj</li>
+
+                  </ul>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-lg-12">
                   <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">></span>
-                    </div>
-                    <input type="text" class="form-control text-right" aria-label="Amount (to the nearest dollar)">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" type="button">Reset</button>
+                      </div>
+                      <input type="text" class="form-control text-right" placeholder="" aria-label="" aria-describedby="basic-addon1">
                   </div>
                 </div>
               </div>
@@ -38,32 +54,31 @@
                   <table class="table keypad">
                       <tbody>
                         <tr class="keypad__tr">
-                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></th>
-                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
-                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
-                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_border_tl">Del</button></th>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">/</button></td>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">*</button></td>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_border_tr">-</button></td>
                         </tr>
                         <tr class="keypad__tr">
-                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></th>
-                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
-                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
-                          <td rowspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_size_big">Primary</button></td>
+                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">7</button></th>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">8</button></td>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">9</button></td>
+                          <td rowspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_size_big">+</button></td>
                         </tr>
                         <tr class="keypad__tr">
-                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></th>
-                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
-                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">4</button></th>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">5</button></td>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">6</button></td>
                         </tr>
                         <tr class="keypad__tr">
-                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></th>
-                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
-                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
-                          <td rowspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_size_big">Primary</button></td>
+                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">1</button></th>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">2</button></td>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">3</button></td>
+                          <td rowspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_size_big  calc__btn_border_br">Enter</button></td>
                         </tr>
                         <tr>
-                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></th>
-                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
-                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                          <td colspan="2" scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_border_bl">0</button></th>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">.</button></td>
                         </tr>
                       </tbody>
                     </table>

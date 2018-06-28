@@ -2,6 +2,12 @@
   background: #877878;
   height: 100vh;
 
+  &__history {
+    font-size: 20px;
+    max-height: 100px;
+    overflow: auto;
+  }
+
   &__btn {
     display: block;
     width: 100%;
@@ -9,8 +15,28 @@
 
     border-radius: 0;
 
-    &_size_big {
-      height: 200px;
+    &_size {
+      &_big {
+        height: 200px;
+      }
+    }
+
+    &_border {
+      &_tl {
+        border-radius: 15px 0 0 0;
+      }
+
+      &_tr {
+        border-radius: 0 15px 0 0;
+      }
+
+      &_br {
+        border-radius: 0 0 15px 0;
+      }
+
+      &_bl {
+        border-radius: 0 0 0 15px;
+      }
     }
   }
 }
