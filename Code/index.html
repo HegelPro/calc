@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="dist/styles.css">
+</head>
+<body>
+  <header>
+
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="row justify-content-center">
+        <section class="calc col-lg-6" id="calc">
+          <form class="d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-lg-12">
+                  <ul class="calc__history text-right"></ul>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">></span>
+                    </div>
+                    <input type="text" class="form-control text-right" aria-label="Amount (to the nearest dollar)">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                  <table class="table keypad">
+                      <tbody>
+                        <tr class="keypad__tr">
+                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></th>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                        </tr>
+                        <tr class="keypad__tr">
+                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></th>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                          <td rowspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_size_big">Primary</button></td>
+                        </tr>
+                        <tr class="keypad__tr">
+                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></th>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                        </tr>
+                        <tr class="keypad__tr">
+                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></th>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                          <td rowspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_size_big">Primary</button></td>
+                        </tr>
+                        <tr>
+                          <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></th>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                          <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn">Primary</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+
+  </footer>
+
+  <script src="dist/bundle.js"></script>
+</body>
+</html>

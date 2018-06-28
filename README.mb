@@ -1,0 +1,10 @@
+Как запустить проект?
+
+Инструкция:
+1) Сделать копию репозитория на локальную машину 
+2) Установить docker
+3) Зайти в папку репозитория и на одном уравне с папкой dockerfile, создать образ докера ( docker build -t "user_name/image_name" )
+4) Запустить докер контейнер на порту ( docker run -p "out_port:server_port" "user_name/image_name" )
+5) Зайти по адресу http://localhost:"out_port"
+
+Пример сверстанного макета: https://hegelpro.github.io/bootstrap/
