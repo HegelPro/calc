@@ -1,5 +1,5 @@
 function Calc() {
-  this.result = 0;
+  this.display = 0;
 
   this.plus = function(n) {
     this.result += n;
