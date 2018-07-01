@@ -1,1 +1,58 @@
-@import "calc"
+body {
+  // background: #7E71B2;
+  background: #7e71b2a8;
+
+}
+
+.container_custom {
+  // background: #5E38FF;
+  background: #7e71b2de;
+
+}
+
+
+.btn-outline-primary {
+  background: #33B234;
+  border: 1px solid #18CC1A;
+  color: #fff;
+
+  &:hover {
+    background: #18CC1A;
+  }
+
+}
+
+.btn-outline-primary.dark {
+  background: #363736;
+  border: 1px solid #363736;
+  color: #fff;
+
+  &:hover {
+    background: #444444;
+    border: 1px solid #444444;
+  }
+}
+
+.btn-primary {
+  background: #18CC1A;
+  border: 1px solid #18CC1A;
+
+  &:hover {
+    background: #33B234;
+  }
+}
+
+.btn-primary.dark {
+  background: #363736;
+  border: 1px solid #363736;
+  color: #fff;
+
+  &:hover {
+    background: #444444;
+    border: 1px solid #444444;
+  }
+}
+
+@import "calc";
+@import "footer";
+@import "header";

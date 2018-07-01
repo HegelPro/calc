@@ -5,79 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
   <link rel="stylesheet" href="dist/styles.css">
 </head>
 <body>
-  <header>
-
+  <header class="header-custom">
+    <div class="container">
+      <div class="row d-flex justify-content-between align-items-center">
+        <div class="d-flex m-3">
+          <div class="header-custom__logo mr-3"></div>
+          <span class="header-custom__name">calc            
+                3000</span>
+        </div>
+        <div class="m-3">
+          <button type="button" class="btn" id="theme-dark">Dark</button>
+          <button type="button" class="btn" style="display: none;" id="theme-light">Light</button>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <div class="container">
+  <main class="main-custom">
+    <div class="container container_custom py-3">
       <div class="row justify-content-center">
         <section class="calc col-lg-6" id="calc">
           <form class="d-flex flex-column justify-content-center">
-              <div class="row">
-                <div class="col-lg-12">
-                    
-                  <ul data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example list-unstyled calc__history text-right">
-                    
-                  </ul>
-                </div>
+            <div class="row">
+              <div class="col-lg-12">
+                  
+                <ul data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example list-unstyled calc__history text-right" id="history"></ul>
               </div>
+            </div>
 
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="input-group">
-                      <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary" type="button" id="btn-reset">Reset</button>
-                      </div>
-                      <input type="text" value="0" class="form-control text-right" placeholder="" aria-label="" aria-describedby="basic-addon1" id="display">
-                  </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="input-group calc__display">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-primary btn-outline-primary_custom" type="button" id="btn-reset">Reset</button>
+                    </div>
+                    <input type="text" value="0" class="form-control text-right calc__display__screen" placeholder="" aria-label="" aria-describedby="basic-addon1" id="display">
                 </div>
               </div>
-              
-              <div class="row">
-                  <table class="table keypad">
-                    <tbody>
-                      <tr class="keypad__tr">
-                        <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_border_tl" id="btn-delete">Del</button></th>
-                        <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-divide">/</button></td>
-                        <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-mult">*</button></td>
-                        <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_border_tr" id="btn-minus">-</button></td>
-                      </tr>
-                      <tr class="keypad__tr">
-                        <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-7">7</button></th>
-                        <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-8">8</button></td>
-                        <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-9">9</button></td>
-                        <td rowspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_size_big" id="btn-plus">+</button></td>
-                      </tr>
-                      <tr class="keypad__tr">
-                        <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-4">4</button></th>
-                        <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-5">5</button></td>
-                        <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-6">6</button></td>
-                      </tr>
-                      <tr class="keypad__tr">
-                        <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-1">1</button></th>
-                        <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-2">2</button></td>
-                        <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-3">3</button></td>
-                        <td rowspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_size_big  calc__btn_border_br" id="btn-equally">=</button></td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_border_bl" id="btn-0">0</button></th>
-                        <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-dot">.</button></td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
+            </div>
+            
+            <div class="row">
+              <table class="table keypad">
+                <tbody>
+                  <tr class="keypad__tr">
+                    <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_border_tl" id="btn-delete">Del</button></th>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-divide">/</button></td>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-mult">*</button></td>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_border_tr" id="btn-minus">-</button></td>
+                  </tr>
+                  <tr class="keypad__tr">
+                    <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-7">7</button></th>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-8">8</button></td>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-9">9</button></td>
+                    <td rowspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_size_big" id="btn-plus">+</button></td>
+                  </tr>
+                  <tr class="keypad__tr">
+                    <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-4">4</button></th>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-5">5</button></td>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-6">6</button></td>
+                  </tr>
+                  <tr class="keypad__tr">
+                    <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-1">1</button></th>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-2">2</button></td>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-3">3</button></td>
+                    <td rowspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_size_big  calc__btn_border_br" id="btn-equally">=</button></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_border_bl" id="btn-0">0</button></th>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-dot">.</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>            
           </form>
         </section>
       </div>
     </div>
   </main>
 
-  <footer>
-
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row d-flex justify-content-end">
+        <p class="align-self-center m-3">Палкин Лев 2018&copy;</p>
+      </div>
+    </div>
   </footer>
 
   <script src="dist/bundle.js"></script>
