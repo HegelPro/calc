@@ -15,6 +15,20 @@ function Calc() {
     "start": ""
   }
 
+  this.switchNextOperation = function(operation) {
+    if(operation === "start") {
+      this.nextOperation = {
+        func: operation,
+        used: false
+      }
+    } else {
+      this.nextOperation = {
+        func: operation,
+        used: true
+      }
+    }
+  }
+
   this.countNumbersAfterDot = function(number) {
     var counter = 0;
 

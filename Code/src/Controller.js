@@ -18,40 +18,29 @@ module.exports = {
 
   doOperation() {
     var pastResult = Model.calc.result
-    var pastDisplay = View.display.display.value
+    var pastDisplay = View.display.value
 
-    Model.calc[Model.calc.nextOperation.func](View.display.display.value);
-    View.display.display.value = 0;
+    Model.calc[Model.calc.nextOperation.func](View.display.value);
+
+    View.display.deleteValue(Model.calc)
 
     View.history.addElem(pastResult + Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + '=' + Model.calc.result)
   },
 
   changeValue(btnValue) {
-    if(Model.calc.nextOperation.used) {
-      View.display.display.value = btnValue
-      Model.calc.nextOperation.used = false
-    } else if(View.display.display.value === "0") {
-      if(btnValue === ".") {
-        View.display.display.value = "0."
-      } else {
-        View.display.display.value = btnValue
-      }
-    } else {
-      View.display.display.value += btnValue
-    }
+    View.display.addNumberDisplay(btnValue, Model.calc);
   },
 
   deleteDisplay() {
-    View.display.display.value = '0'    
+    View.display.deleteValue(Model.calc)
   },
 
   resetValue() {
     View.history.addHr()
 
-    Model.calc.nextOperation.used = false
-    Model.calc.nextOperation.func = "start";
+    Model.calc.switchNextOperation("start")
 
-    View.display.display.value = '0'
+    View.display.deleteValue(Model.calc)
 
     Model.calc.result = 0
   },
@@ -69,7 +58,7 @@ module.exports = {
   },
 
   addEventListenerToNumber(event) {
-    this.changeValue(event.target.innerText);
+    this.changeValue(event.target.innerText)
   },
 
   addEventListenersToNumbers() {
@@ -83,42 +72,49 @@ module.exports = {
   addEventListenersToOperators() {
     View.keypad.btnPlus.addEventListener("click", ()=>{
       if(Model.calc.nextOperation.func === "start") {
-        Model.calc.result = Number(View.display.display.value);
+        Model.calc.result = Number(View.display.value)
 
         View.history.addElem(Model.calc.result)
       }
-      Model.calc.nextOperation.used = true
-      Model.calc.nextOperation.func = "plus";
+
+      Model.calc.switchNextOperation("plus")
+
+      View.display.switchDisplay(Model.calc)
     })
 
     View.keypad.btnMinus.addEventListener("click", ()=>{
       if(Model.calc.nextOperation.func === "start") {
-        Model.calc.result = Number(View.display.display.value);
+        Model.calc.result = Number(View.display.value)
 
         View.history.addElem(Model.calc.result)
       }
-      Model.calc.nextOperation.used = true
-      Model.calc.nextOperation.func = "minus";
+
+      Model.calc.switchNextOperation("minus")
+
+      View.display.switchDisplay(Model.calc)
     })
 
     View.keypad.btnMult.addEventListener("click", ()=>{
       if(Model.calc.nextOperation.func === "start") {
-        Model.calc.result = Number(View.display.display.value);
+        Model.calc.result = Number(View.display.value);
 
         View.history.addElem(Model.calc.result)
       }
-      Model.calc.nextOperation.used = true
-      Model.calc.nextOperation.func = "mult";
+
+      Model.calc.switchNextOperation("mult")
+
+      View.display.switchDisplay(Model.calc)
     })
 
     View.keypad.btnDivide.addEventListener("click", ()=>{
       if(Model.calc.nextOperation.func === "start") {
-        Model.calc.result = Number(View.display.display.value);
+        Model.calc.result = Number(View.display.value);
 
         View.history.addElem(Model.calc.result)
       }
-      Model.calc.nextOperation.used = true
-      Model.calc.nextOperation.func = "divide";
+      Model.calc.switchNextOperation("divide")
+
+      View.display.switchDisplay(Model.calc)
     })
   },
 
