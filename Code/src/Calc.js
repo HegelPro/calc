@@ -1,6 +1,8 @@
 function Calc() {
   this.result = 0;
+
   this.dotOn = false;
+  this.persentOn = false;
 
   this.nextOperation = {
     func: "start",
@@ -49,27 +51,46 @@ function Calc() {
   }
 
   this.plus = function(n) {
-    var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( Number(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( Number(n) );
+    if(this.persentOn) n = ( this.result * parseFloat(n) / 100).toString();
 
-    this.result = (this.mult10(this.result, times) + this.mult10(Number(n), times)) / this.mult10(1, times);
+    // var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( parseFloat(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( parseFloat(n) );
+    // this.result = (this.mult10(this.result, times) + this.mult10( parseFloat(n) , times)) / this.mult10(1, times);
+    
+    this.result = this.result + parseFloat(n);
   }
 
   this.minus = function(n) {
-    var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( Number(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( Number(n) );
+    if(this.persentOn) n = ( this.result * parseFloat(n) / 100).toString();
 
-    this.result = (this.mult10(this.result, times) - this.mult10(Number(n), times)) / this.mult10(1, times);
+    // var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( parseFloat(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( parseFloat(n) );
+    // this.result = (this.mult10(this.result, times) - this.mult10(parseFloat(n), times)) / this.mult10(1, times);
+  
+    this.result = this.result - parseFloat(n);
   }
-
+//TODO
   this.divide = function(n) {
-    var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( Number(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( Number(n) );
+    if(this.persentOn) {
+      this.result = ( this.result / parseFloat(n) * 100).toString()
+      
+      return
+    }
+    
+    // var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( parseFloat(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( parseFloat(n) );
+    // this.result = (this.mult10(this.result, times) / this.mult10(parseFloat(n), times)) / this.mult10(1, times);
 
-    this.result = (this.mult10(this.result, times) / this.mult10(Number(n), times)) / this.mult10(1, times);
+    this.result = this.result / parseFloat(n);
   }
-
+//TODO
   this.mult = function(n) {
-    var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( Number(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( Number(n) );
+    if(this.persentOn) {
+      this.result = ( this.result * parseFloat(n) / 100).toString()
+      
+      return
+    }
+    // var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( parseFloat(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( parseFloat(n) );
+    // this.result = (this.mult10(this.result, times) * this.mult10(parseFloat(n), times)) / this.mult10(1, times);
 
-    this.result = (this.mult10(this.result, times) * this.mult10(Number(n), times)) / this.mult10(1, times);
+    this.result = this.result * parseFloat(n);
   }
 }
 

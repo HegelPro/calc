@@ -20,6 +20,8 @@
         <div class="m-3">
           <button type="button" class="btn" id="theme-dark">Dark</button>
           <button type="button" class="btn" style="display: none;" id="theme-light">Light</button>
+          <button type="button" class="btn" id="theme-scientific-mode">Scientific</button>
+          <button type="button" class="btn" style="display: none;" id="theme-normal-mode">Normal</button>
         </div>
       </div>
     </div>
@@ -31,52 +33,55 @@
         <section class="calc col-lg-6" id="calc">
           <form class="d-flex flex-column justify-content-center">
             <div class="row">
-              <div class="col-lg-12">
-                  
-                <ul data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example list-unstyled calc__history text-right" id="history"></ul>
+              <div class="col-lg-12 px-0">
+                <ul data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example list-unstyled calc__history text-right mb-0" id="history"></ul>
               </div>
             </div>
 
             <div class="row">
-              <div class="col-lg-12">
+              <div class="col-lg-12 px-0">
                 <div class="input-group calc__display">
-                    <div class="input-group-prepend">
-                      <button class="btn btn-outline-primary btn-outline-primary_custom" type="button" id="btn-reset">Reset</button>
-                    </div>
-                    <input type="text" value="0" class="form-control text-right calc__display__screen" placeholder="" aria-label="" aria-describedby="basic-addon1" id="display">
+                  <input type="text" value="0" class="form-control text-right calc__display__screen" placeholder="" aria-label="" aria-describedby="basic-addon1" id="display">
                 </div>
               </div>
             </div>
             
             <div class="row">
-              <table class="table keypad">
+              <table class="table keypad mx-0">
                 <tbody>
                   <tr class="keypad__tr">
-                    <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_border_tl" id="btn-delete">Del</button></th>
+                    <td scope="row" class="keypad__td calc__for-scientific"><button type="button" class="btn btn-primary calc__btn" id="btn-888">888</button></th>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-reset">Reset</button></th>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-delete">Del</button></th>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-percent">%</button></td>
                     <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-divide">/</button></td>
-                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-mult">*</button></td>
-                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_border_tr" id="btn-minus">-</button></td>
                   </tr>
                   <tr class="keypad__tr">
-                    <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-7">7</button></th>
+                    <td scope="row" class="keypad__td calc__for-scientific"><button type="button" class="btn btn-primary calc__btn" id="btn-888">888</button></th>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-7">7</button></th>
                     <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-8">8</button></td>
                     <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-9">9</button></td>
-                    <td rowspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_size_big" id="btn-plus">+</button></td>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-mult">*</button></td>
                   </tr>
                   <tr class="keypad__tr">
-                    <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-4">4</button></th>
+                    <td scope="row" class="keypad__td calc__for-scientific"><button type="button" class="btn btn-primary calc__btn" id="btn-888">888</button></th>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-4">4</button></th>
                     <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-5">5</button></td>
                     <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-6">6</button></td>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-minus">-</button></td>
                   </tr>
                   <tr class="keypad__tr">
-                    <td scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-1">1</button></th>
+                    <td scope="row" class="keypad__td calc__for-scientific"><button type="button" class="btn btn-primary calc__btn" id="btn-888">888</button></th>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-1">1</button></th>
                     <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-2">2</button></td>
                     <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-3">3</button></td>
-                    <td rowspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_size_big  calc__btn_border_br" id="btn-equally">=</button></td>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-plus">+</button></td>
                   </tr>
                   <tr>
-                    <td colspan="2" scope="row" class="keypad__td"><button type="button" class="btn btn-primary calc__btn calc__btn_border_bl" id="btn-0">0</button></th>
+                    <td scope="row" class="keypad__td calc__for-scientific"><button type="button" class="btn btn-primary calc__btn" id="btn-888">888</button></th>
+                    <td colspan="2" class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-0">0</button></th>
                     <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-dot">.</button></td>
+                    <td class="keypad__td"><button type="button" class="btn btn-primary calc__btn" id="btn-equally">=</button></td>
                   </tr>
                 </tbody>
               </table>

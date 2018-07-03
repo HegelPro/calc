@@ -1,6 +1,6 @@
 .header-custom {
   background: #5E38FF;
-  min-height: 10vh;
+  min-height: 12vh;
 
   &__logo {
     width: 50px;
@@ -15,4 +15,8 @@
     text-transform: uppercase;
     white-space: pre-line;
   }
+
+  // &__btn {
+    
+  // }
 }

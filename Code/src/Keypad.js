@@ -15,6 +15,7 @@ function Keypad() {
   this.btn8 = document.querySelector("#btn-8");
   this.btn9 = document.querySelector("#btn-9");
   this.btnDot = document.querySelector("#btn-dot");
+  this.btnPercent = document.querySelector("#btn-percent");
 
   this.btnEqually = document.querySelector("#btn-equally");
   this.btnDelete = document.querySelector("#btn-delete");

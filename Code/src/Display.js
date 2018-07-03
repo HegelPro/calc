@@ -10,11 +10,13 @@ function Display() {
   }
 
   this.getValue = function() {
-    return Number(this.value);
+    return parseFloat(this.value);
   }
 
   this.switchDisplay = function(calc) {
-    this.display.value = calc.operationMap[calc.nextOperation.func] + " " + this.value
+    var persentMode = (calc.persentOn) ? '%': '';
+
+    this.display.value = calc.operationMap[calc.nextOperation.func] + " " + this.value + persentMode;
   }
 
   this.addNumberDisplay = function(number, calc) {
@@ -24,9 +26,16 @@ function Display() {
     } else if(this.value === "0") {
       if(number === ".") {
         this.value = "0."
+      } else if(number === "%") {
+        calc.persentMode = true
+        // this.value = "0" //TODO
       } else {
         this.value = number
       }
+    } else if(number === '%') {
+      calc.persentOn = true
+    } else if (number === '.') {
+      
     } else {
       this.value += number
     }

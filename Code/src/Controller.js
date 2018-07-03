@@ -12,19 +12,22 @@ module.exports = {
     this.addEventListenerToReset()
     this.addEventListenersToOperators()
     this.addEventListenerToEqually()
-    
+
     this.addEventListenerToThemeBtns()
   },
 
   doOperation() {
     var pastResult = Model.calc.result
     var pastDisplay = View.display.value
+    var persentMode = (Model.calc.persentOn) ? '%': '';
 
     Model.calc[Model.calc.nextOperation.func](View.display.value);
 
-    View.display.deleteValue(Model.calc)
+    View.display.value = Model.calc.result
+    View.display.switchDisplay(Model.calc)
+    Model.calc.persentOn = false
 
-    View.history.addElem(pastResult + Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + '=' + Model.calc.result)
+    View.history.addElem(pastResult + Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + persentMode + '=' + Model.calc.result)
   },
 
   changeValue(btnValue) {
@@ -33,6 +36,8 @@ module.exports = {
 
   deleteDisplay() {
     View.display.deleteValue(Model.calc)
+
+    Model.calc.persentOn = false
   },
 
   resetValue() {
@@ -67,6 +72,7 @@ module.exports = {
     }
 
     View.keypad.btnDot.addEventListener('click', this.addEventListenerToNumber.bind(this))
+    View.keypad.btnPercent.addEventListener('click', this.addEventListenerToNumber.bind(this))
   },
 
   addEventListenersToOperators() {
@@ -132,7 +138,21 @@ module.exports = {
       View.theme.btnDarkTheme.style.display = "block";
       
       View.theme.switchOnLight()
-    })
+    });
+
+    View.theme.btnScientificTheme.addEventListener("click", (event)=>{
+      View.theme.btnNormalTheme.style.display = "block";
+      View.theme.btnScientificTheme.style.display = "none";
+
+      View.theme.switchOnScientific()
+    });
+
+    View.theme.btnNormalTheme.addEventListener("click", (event)=>{
+      View.theme.btnNormalTheme.style.display = "none";
+      View.theme.btnScientificTheme.style.display = "block";
+
+      View.theme.switchOnNormal()
+    });
   }
 };
 

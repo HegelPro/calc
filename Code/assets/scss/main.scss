@@ -7,49 +7,30 @@ body {
 .container_custom {
   // background: #5E38FF;
   background: #7e71b2de;
-
-}
-
-
-.btn-outline-primary {
-  background: #33B234;
-  border: 1px solid #18CC1A;
-  color: #fff;
-
-  &:hover {
-    background: #18CC1A;
-  }
-
-}
-
-.btn-outline-primary.dark {
-  background: #363736;
-  border: 1px solid #363736;
-  color: #fff;
-
-  &:hover {
-    background: #444444;
-    border: 1px solid #444444;
-  }
+  padding: 2vh 0;
 }
 
 .btn-primary {
-  background: #18CC1A;
-  border: 1px solid #18CC1A;
+  background: #f3f3f3;
+  border: none;
+  color: #363736;
 
   &:hover {
-    background: #33B234;
+    background: #e8e8e8;
+    color: #363736;
+    box-shadow: none;
   }
 }
 
 .btn-primary.dark {
-  background: #363736;
-  border: 1px solid #363736;
+  background: #292929;
+  border: none;
   color: #fff;
 
   &:hover {
     background: #444444;
-    border: 1px solid #444444;
+    color: #363736;
+    box-shadow: none;
   }
 }
 
