@@ -1,10 +1,36 @@
-Как запустить проект?
+# Project Title
 
-Инструкция:
-1) Сделать копию репозитория на локальную машину 
-2) Установить docker
-3) Зайти в папку репозитория и на одном уравне с папкой dockerfile, создать образ докера ( docker build -t "user_name/image_name" )
-4) Запустить докер контейнер на порту ( docker run -p "out_port:server_port" "user_name/image_name" )
-5) Зайти по адресу http://localhost:"out_port"
+It's my realize calculator
 
-Пример сверстанного макета: https://hegelpro.github.io/calc/
+## Getting Started
+
+Clone the repositorie for your own machine
+
+```
+git clone https://github.com/HegelPro.git
+```
+
+### Installing
+
+You must install docker https://www.docker.com/get-docker
+
+## Running the tests
+
+Entre in folder with dockerfile and create a docker image 
+
+```
+docker build -t "user_name/image_name"
+```
+
+Run a docker container
+
+```
+docker run -p "out_port:server_port" "user_name/image_name" 
+```
+
+Visit your site for http://localhost:"out_port"
+
+
+## Authors
+
+* **Lev Palkin** - *Initial work* - [HegelPro](https://github.com/HegelPro)
