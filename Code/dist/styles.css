@@ -12,7 +12,7 @@
 
 .btn-primary {
   background: #f3f3f3;
-  border: none;
+  border: 0.5px solid #aeaeae;
   color: #363736; }
   .btn-primary:hover {
     background: #e8e8e8;
@@ -21,7 +21,7 @@
 
 .btn-primary.dark {
   background: #292929;
-  border: none;
+  border: 0.5px solid #aeaeae;
   color: #fff; }
   .btn-primary.dark:hover {
     background: #444444;
