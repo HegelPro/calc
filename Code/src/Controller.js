@@ -19,15 +19,59 @@ module.exports = {
   doOperation() {
     var pastResult = Model.calc.result
     var pastDisplay = View.display.value
-    var persentMode = (Model.calc.persentOn) ? '%': '';
 
     Model.calc[Model.calc.nextOperation.func](View.display.value);
 
     View.display.value = Model.calc.result
     View.display.switchDisplay(Model.calc)
+
+    Model.calc.nextOperation.used = true
+
+    View.history.addElem(pastResult + Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + '=' + Model.calc.result)
+  },
+
+  doOperationWithPercent() {
+    var pastResult = Model.calc.result
+    var pastDisplay = View.display.value
+
+    Model.calc.persentOn = true
+    Model.calc[Model.calc.nextOperation.func](View.display.value);
     Model.calc.persentOn = false
 
-    View.history.addElem(pastResult + Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + persentMode + '=' + Model.calc.result)
+    View.display.value = Model.calc.result
+    View.display.switchDisplay(Model.calc)
+
+    Model.calc.nextOperation.used = true
+
+    View.history.addElem(pastResult + Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + "%" + '=' + Model.calc.result)
+  },
+
+  doOperationWithSqrt() {
+    Model.calc.result = View.display.value
+    var pastDisplay = View.display.value
+
+    Model.calc["sqrt"]();
+
+    View.display.value = Model.calc.result
+    View.display.switchDisplay(Model.calc)
+
+    Model.calc.nextOperation.used = true
+
+    View.history.addElem('√' + pastDisplay + '=' + Model.calc.result)
+  },
+
+  doOperationWithFactorial() {
+    Model.calc.result = View.display.value
+    var pastDisplay = View.display.value
+
+    Model.calc["factorial"](View.display.value);
+
+    View.display.value = Model.calc.result
+    View.display.switchDisplay(Model.calc)
+
+    Model.calc.nextOperation.used = true
+
+    View.history.addElem('!' + pastDisplay + '=' + Model.calc.result)
   },
 
   changeValue(btnValue) {
@@ -36,8 +80,6 @@ module.exports = {
 
   deleteDisplay() {
     View.display.deleteValue(Model.calc)
-
-    Model.calc.persentOn = false
   },
 
   resetValue() {
@@ -51,7 +93,13 @@ module.exports = {
   },
 
   addEventListenerToEqually() {
-    View.keypad.btnEqually.addEventListener("click", this.doOperation)  
+    View.keypad.btnEqually.addEventListener("click", this.doOperation)
+    
+    View.keypad.btnPercent.addEventListener('click', this.doOperationWithPercent)
+    
+    View.keypad.btnSqrt.addEventListener('click', this.doOperationWithSqrt)
+
+    View.keypad.btnFactorial.addEventListener('click', this.doOperationWithFactorial)
   },
 
   addEventListenerToDelete() {
@@ -72,31 +120,26 @@ module.exports = {
     }
 
     View.keypad.btnDot.addEventListener('click', this.addEventListenerToNumber.bind(this))
-    View.keypad.btnPercent.addEventListener('click', this.addEventListenerToNumber.bind(this))
   },
 
   addEventListenersToOperators() {
     View.keypad.btnPlus.addEventListener("click", ()=>{
       if(Model.calc.nextOperation.func === "start") {
         Model.calc.result = Number(View.display.value)
-
         View.history.addElem(Model.calc.result)
       }
 
       Model.calc.switchNextOperation("plus")
-
       View.display.switchDisplay(Model.calc)
     })
 
     View.keypad.btnMinus.addEventListener("click", ()=>{
       if(Model.calc.nextOperation.func === "start") {
         Model.calc.result = Number(View.display.value)
-
         View.history.addElem(Model.calc.result)
       }
 
       Model.calc.switchNextOperation("minus")
-
       View.display.switchDisplay(Model.calc)
     })
 
@@ -108,18 +151,46 @@ module.exports = {
       }
 
       Model.calc.switchNextOperation("mult")
-
       View.display.switchDisplay(Model.calc)
     })
 
     View.keypad.btnDivide.addEventListener("click", ()=>{
       if(Model.calc.nextOperation.func === "start") {
         Model.calc.result = Number(View.display.value);
-
         View.history.addElem(Model.calc.result)
       }
-      Model.calc.switchNextOperation("divide")
 
+      Model.calc.switchNextOperation("divide")
+      View.display.switchDisplay(Model.calc)
+    })
+
+    View.keypad.btnPow.addEventListener("click", ()=>{
+      if(Model.calc.nextOperation.func === "start") {
+        Model.calc.result = Number(View.display.value);
+        View.history.addElem(Model.calc.result)
+      }
+
+      Model.calc.switchNextOperation("pow")
+      View.display.switchDisplay(Model.calc)
+    })
+
+    View.keypad.btnSqrtByBase.addEventListener("click", ()=>{
+      if(Model.calc.nextOperation.func === "start") {
+        Model.calc.result = Number(View.display.value);
+        View.history.addElem(Model.calc.result)
+      }
+
+      Model.calc.switchNextOperation("sqrtByBase")
+      View.display.switchDisplay(Model.calc)
+    })
+
+    View.keypad.btnLog.addEventListener("click", ()=>{
+      if(Model.calc.nextOperation.func === "start") {
+        Model.calc.result = Number(View.display.value);
+        View.history.addElem(Model.calc.result)
+      }
+      
+      Model.calc.switchNextOperation("log")
       View.display.switchDisplay(Model.calc)
     })
   },
@@ -131,7 +202,6 @@ module.exports = {
 
       View.theme.switchOnDark()
     });
-    
 
     View.theme.btnLightTheme.addEventListener("click", (event)=>{
       View.theme.btnLightTheme.style.display = "none";

@@ -20,6 +20,13 @@ function Keypad() {
   this.btnEqually = document.querySelector("#btn-equally");
   this.btnDelete = document.querySelector("#btn-delete");
   this.btnReset = document.querySelector("#btn-reset");
+
+  this.btnPow = document.querySelector("#btn-pow");
+  this.btnLog = document.querySelector("#btn-log");
+  this.btnSqrtByBase = document.querySelector("#btn-sqrt-by-base");
+
+  this.btnSqrt = document.querySelector("#btn-sqrt");
+  this.btnFactorial = document.querySelector("#btn-factorial");
 }
 
 

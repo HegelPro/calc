@@ -46,6 +46,10 @@
     height: 80px;
 
     border-radius: 0;
+
+    &.resize {
+      width: 20%;
+    }
   }
 
   &__for-scientific {

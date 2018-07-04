@@ -32,15 +32,26 @@ function Theme() {
 
   this.switchOnScientific = function() {
     this.keypad.forEach(element => {
+      element.className += " resize"
       element.style.display = "block"
-      element.style.width = "20%"
-    });
+    });   
+
+    // this.keypad.forEach(element => {
+    //   element.style.width = "20%"
+    //   element.style.display = "block"
+
+    // });
   }
 
   this.switchOnNormal = function() {
     this.keypad.forEach(element => {
-      element.style = ""
+      element.className = element.className.replace(" resize", '');
+      element.style = "";
     });
+
+    // this.keypad.forEach(element => {
+    //   element.style = ""
+    // });
   }
 }
 

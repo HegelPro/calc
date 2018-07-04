@@ -14,7 +14,12 @@ function Calc() {
     "mult": "*",
     "plus": "+",
     "minus": "-",
-    "start": ""
+    "start": "",
+    "pow": "^",
+    "sqrtByBase": "√",
+    "log": "log"
+    // "sqrt": "√",
+    // "factorial": '!'
   }
 
   this.switchNextOperation = function(operation) {
@@ -67,7 +72,7 @@ function Calc() {
   
     this.result = this.result - parseFloat(n);
   }
-//TODO
+
   this.divide = function(n) {
     if(this.persentOn) {
       this.result = ( this.result / parseFloat(n) * 100).toString()
@@ -80,17 +85,45 @@ function Calc() {
 
     this.result = this.result / parseFloat(n);
   }
-//TODO
+
   this.mult = function(n) {
     if(this.persentOn) {
       this.result = ( this.result * parseFloat(n) / 100).toString()
       
       return
     }
+
     // var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( parseFloat(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( parseFloat(n) );
     // this.result = (this.mult10(this.result, times) * this.mult10(parseFloat(n), times)) / this.mult10(1, times);
 
     this.result = this.result * parseFloat(n);
+  }
+
+  this.pow = function(n) {
+    this.result = Math.pow(this.result, parseFloat(n))
+  }
+
+  this.sqrt = function() {
+    this.result = Math.sqrt(this.result)
+
+    console.log(this.result + "  " + Math.sqrt(this.result));
+    
+  }
+
+  this.sqrtByBase = function(n) {
+    this.result = Math.pow(this.result, 1/parseFloat(n))
+  }
+
+  this.log = function(n) {
+    this.result = Math.log(n) / Math.log(this.result);
+  }
+
+  this.factorial = function(n) {
+    var z = 1;
+
+    for (let i = 1; i <= n; i++) z = z * i;
+
+    this.result = z; 
   }
 }
 

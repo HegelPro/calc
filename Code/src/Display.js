@@ -14,28 +14,17 @@ function Display() {
   }
 
   this.switchDisplay = function(calc) {
-    var persentMode = (calc.persentOn) ? '%': '';
-
-    this.display.value = calc.operationMap[calc.nextOperation.func] + " " + this.value + persentMode;
+    this.display.value = calc.operationMap[calc.nextOperation.func] + " " + this.value;
   }
 
   this.addNumberDisplay = function(number, calc) {
     if(calc.nextOperation.used) {
       this.value = number
       calc.nextOperation.used = false
-    } else if(this.value === "0") {
-      if(number === ".") {
-        this.value = "0."
-      } else if(number === "%") {
-        calc.persentMode = true
-        // this.value = "0" //TODO
-      } else {
-        this.value = number
-      }
-    } else if(number === '%') {
-      calc.persentOn = true
-    } else if (number === '.') {
-      
+    } else if (this.value === "0" && number === ".") {
+      this.value = "0."
+    } else if (this.value === "0") {
+      this.value = number
     } else {
       this.value += number
     }
