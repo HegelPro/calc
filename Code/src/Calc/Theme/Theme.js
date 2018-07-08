@@ -6,7 +6,7 @@ function Theme() {
   this.btnNormalTheme = document.querySelector("#theme-normal-mode");
 
   this.calc = document.querySelector(".calc");
-  this.keypad = document.querySelectorAll(".btn-primary");
+  this.keypad = document.querySelectorAll(".calc__btn");
   this.display = document.querySelector("#display");
   this.list = document.querySelector(".calc__history");
   this.btnReset = document.querySelector("#btn-reset");
@@ -35,12 +35,6 @@ function Theme() {
       element.className += " resize"
       element.style.display = "block"
     });   
-
-    // this.keypad.forEach(element => {
-    //   element.style.width = "20%"
-    //   element.style.display = "block"
-
-    // });
   }
 
   this.switchOnNormal = function() {
@@ -48,10 +42,6 @@ function Theme() {
       element.className = element.className.replace(" resize", '');
       element.style = "";
     });
-
-    // this.keypad.forEach(element => {
-    //   element.style = ""
-    // });
   }
 }
 

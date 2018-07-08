@@ -57,33 +57,26 @@ function Calc() {
 
   this.plus = function(n) {
     if(this.persentOn) n = ( this.result * parseFloat(n) / 100).toString();
-
-    // var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( parseFloat(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( parseFloat(n) );
-    // this.result = (this.mult10(this.result, times) + this.mult10( parseFloat(n) , times)) / this.mult10(1, times);
-    
+   
     this.result = this.result + parseFloat(n);
+    this.result = +this.result.toFixed(10)
   }
 
   this.minus = function(n) {
     if(this.persentOn) n = ( this.result * parseFloat(n) / 100).toString();
 
-    // var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( parseFloat(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( parseFloat(n) );
-    // this.result = (this.mult10(this.result, times) - this.mult10(parseFloat(n), times)) / this.mult10(1, times);
-  
     this.result = this.result - parseFloat(n);
+    this.result = +this.result.toFixed(10)
   }
 
   this.divide = function(n) {
     if(this.persentOn) {
       this.result = ( this.result / parseFloat(n) * 100).toString()
-      
       return
     }
     
-    // var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( parseFloat(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( parseFloat(n) );
-    // this.result = (this.mult10(this.result, times) / this.mult10(parseFloat(n), times)) / this.mult10(1, times);
-
     this.result = this.result / parseFloat(n);
+    this.result = +this.result.toFixed(10)
   }
 
   this.mult = function(n) {
@@ -93,29 +86,28 @@ function Calc() {
       return
     }
 
-    // var times = ( this.countNumbersAfterDot(this.result) > this.countNumbersAfterDot( parseFloat(n) )) ? this.countNumbersAfterDot(this.result):this.countNumbersAfterDot( parseFloat(n) );
-    // this.result = (this.mult10(this.result, times) * this.mult10(parseFloat(n), times)) / this.mult10(1, times);
-
     this.result = this.result * parseFloat(n);
+    this.result = +this.result.toFixed(10)
   }
 
   this.pow = function(n) {
     this.result = Math.pow(this.result, parseFloat(n))
+    this.result = +this.result.toFixed(10)
   }
 
   this.sqrt = function() {
     this.result = Math.sqrt(this.result)
-
-    console.log(this.result + "  " + Math.sqrt(this.result));
-    
+    this.result = +this.result.toFixed(10)
   }
 
   this.sqrtByBase = function(n) {
     this.result = Math.pow(this.result, 1/parseFloat(n))
+    this.result = +this.result.toFixed(10)
   }
 
   this.log = function(n) {
-    this.result = Math.log(n) / Math.log(this.result);
+    this.result = Math.log(this.result) / Math.log(n);
+    this.result = +this.result.toFixed(10)
   }
 
   this.factorial = function(n) {
@@ -124,6 +116,7 @@ function Calc() {
     for (let i = 1; i <= n; i++) z = z * i;
 
     this.result = z; 
+    this.result = +this.result.toFixed(10)
   }
 }
 

@@ -1,4 +1,4 @@
-const Calc = require('./Calc.js')
+const Calc = require('./Calc/Calc.js')
 
 module.exports = {
   calc: Calc

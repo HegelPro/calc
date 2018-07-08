@@ -6,6 +6,8 @@ function Display() {
   this.deleteValue = function(calc) {
     this.value = "0";
 
+    calc.dotOn = false
+
     this.switchDisplay(calc)
   }
 

@@ -3,7 +3,6 @@
 
   padding: 3vh 15px;
   background: #f3f3f3;
-  // background: #000;
   border-radius: 5px;
   min-height: 76vh;
 
@@ -48,8 +47,38 @@
 
     border-radius: 0;
 
+    background: #f3f3f3;
+    border: 0.5px solid #aeaeae;
+    color: #363736;
+
     &.resize {
       width: 20%;
+    }
+
+    &:hover {
+      background: #e8e8e8;
+      color: #363736;
+      box-shadow: none;
+    }
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      box-shadow: none;
+      outline: none;
+    }
+
+    &.dark {
+      background: #292929;
+      border: 0.5px solid #aeaeae;
+      color: #fff;
+      
+
+      &:hover {
+        background: #444444;
+        box-shadow: none;
+      }
     }
   }
 
@@ -61,3 +90,6 @@
     background-color: #292929;
   }
 }
+
+
+

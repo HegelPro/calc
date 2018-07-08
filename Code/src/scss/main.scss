@@ -1,36 +1,20 @@
 body {
-  // background: #7E71B2;
   background: #7e71b2a8;
 
 }
 
 .container_custom {
-  // background: #5E38FF;
   background: #7e71b2de;
   padding: 2vh 0;
 }
 
-.btn-primary {
-  background: #f3f3f3;
-  border: 0.5px solid #aeaeae;
-  color: #363736;
-
-  &:hover {
-    background: #e8e8e8;
-    color: #363736;
+.form-control {
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
     box-shadow: none;
-  }
-}
-
-.btn-primary.dark {
-  background: #292929;
-  border: 0.5px solid #aeaeae;
-  color: #fff;
-  
-
-  &:hover {
-    background: #444444;
-    box-shadow: none;
+    outline: none;
   }
 }
 
