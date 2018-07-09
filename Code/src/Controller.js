@@ -1,22 +1,24 @@
-const Model = require('./Model.js');
-const View = require('./View.js');
+const classModel = require('./Model.js');
+const classView = new require('./View.js');
 
 
-module.exports = {
-  model: Model,
-  view: View,
+function Controller(elementCalc) {
+  const Model = new classModel();
+  const View = new classView(elementCalc);
+  
+  initEvents()
 
-  start() {
-    this.addEventListenersToNumbers()
-    this.addEventListenerToDelete()
-    this.addEventListenerToReset()
-    this.addEventListenersToOperators()
-    this.addEventListenerToEqually()
+  function initEvents() {
+    addEventListenersToNumbers()
+    addEventListenerToDelete()
+    addEventListenerToReset()
+    addEventListenersToOperators()
+    addEventListenerToEqually()
 
-    this.addEventListenerToThemeBtns()
-  },
+    addEventListenerToThemeBtns()
+  }
 
-  doOperation() {
+  function doOperation() {
     var pastResult = Model.calc.result
     var pastDisplay = View.display.value
 
@@ -39,9 +41,9 @@ module.exports = {
     }
 
     View.history.addElem(pastResult + Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + '=' + Model.calc.result)
-  },
+  }
 
-  doOperationWithPercent() {
+  function doOperationWithPercent() {
     var pastResult = Model.calc.result
     var pastDisplay = View.display.value
 
@@ -55,9 +57,9 @@ module.exports = {
     Model.calc.nextOperation.used = true
 
     View.history.addElem(pastResult + Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + '%' + '=' + Model.calc.result)
-  },
+  }
 
-  doOperationWithSqrt() {
+  function doOperationWithSqrt() {
     Model.calc.result = View.display.value
     var pastDisplay = View.display.value
 
@@ -69,9 +71,9 @@ module.exports = {
     Model.calc.nextOperation.used = true
 
     View.history.addElem('√' + pastDisplay + '=' + Model.calc.result)
-  },
+  }
 
-  doOperationWithFactorial() {
+  function doOperationWithFactorial() {
     Model.calc.result = View.display.value
     var pastDisplay = View.display.value
 
@@ -83,17 +85,17 @@ module.exports = {
     Model.calc.nextOperation.used = true
 
     View.history.addElem('!' + pastDisplay + '=' + Model.calc.result)
-  },
+  }
 
-  changeValue(btnValue) {
+  function changeValue(btnValue) {
     View.display.addNumberDisplay(btnValue, Model.calc);
-  },
+  }
 
-  deleteDisplay() {
+  function deleteDisplay() {
     View.display.deleteValue(Model.calc)
-  },
+  }
 
-  resetValue() {
+  function resetValue() {
     View.history.addHr()
 
     Model.calc.switchNextOperation('start')
@@ -101,39 +103,39 @@ module.exports = {
     View.display.deleteValue(Model.calc)
 
     Model.calc.result = 0
-  },
+  }
 
-  addEventListenerToEqually() {
-    View.keypad.btnEqually.addEventListener('click', this.doOperation)
+  function addEventListenerToEqually() {
+    View.keypad.btnEqually.addEventListener('click', doOperation)
     
-    View.keypad.btnPercent.addEventListener('click', this.doOperationWithPercent)
+    View.keypad.btnPercent.addEventListener('click', doOperationWithPercent)
     
-    View.keypad.btnSqrt.addEventListener('click', this.doOperationWithSqrt)
+    View.keypad.btnSqrt.addEventListener('click', doOperationWithSqrt)
 
-    View.keypad.btnFactorial.addEventListener('click', this.doOperationWithFactorial)
-  },
+    View.keypad.btnFactorial.addEventListener('click', doOperationWithFactorial)
+  }
 
-  addEventListenerToDelete() {
-    View.keypad.btnDelete.addEventListener('click', this.deleteDisplay)
-  },
+  function addEventListenerToDelete() {
+    View.keypad.btnDelete.addEventListener('click', deleteDisplay)
+  }
 
-  addEventListenerToReset() {
-    View.keypad.btnReset.addEventListener('click', this.resetValue)
-  },
+  function addEventListenerToReset() {
+    View.keypad.btnReset.addEventListener('click', resetValue)
+  }
 
-  addEventListenerToNumber(event) {
-    this.changeValue(event.target.innerText)
-  },
+  function addEventListenerToNumber(event) {
+    changeValue(event.target.innerText)
+  }
 
-  addEventListenersToNumbers() {
+  function addEventListenersToNumbers() {
     for (let index = 0; index < 10; index++) {
-      View.keypad['btn' + index.toString()].addEventListener('click', this.addEventListenerToNumber.bind(this))
+      View.keypad['btn' + index.toString()].addEventListener('click', addEventListenerToNumber.bind(this))
     }
 
-    View.keypad.btnDot.addEventListener('click', this.addEventListenerToNumber.bind(this))
-  },
+    View.keypad.btnDot.addEventListener('click', addEventListenerToNumber.bind(this))
+  }
 
-  addEventListenersToOperators() {
+  function addEventListenersToOperators() {
     View.keypad.btnPlus.addEventListener('click', ()=>{
       if(Model.calc.nextOperation.func === 'start') Model.calc.result = Number(View.display.value)
 
@@ -182,9 +184,9 @@ module.exports = {
       Model.calc.switchNextOperation('log')
       View.display.switchDisplay(Model.calc)
     })
-  },
+  }
 
-  addEventListenerToThemeBtns() {
+  function addEventListenerToThemeBtns() {
     View.theme.btnDarkTheme.addEventListener('click', (event)=>{
       View.theme.btnLightTheme.style.display = 'block';
       View.theme.btnDarkTheme.style.display = 'none';
@@ -215,3 +217,5 @@ module.exports = {
   }
 };
 
+
+module.exports = Controller

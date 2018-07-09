@@ -18,8 +18,6 @@ function Calc() {
     "pow": "^",
     "sqrtByBase": "√",
     "log": "log"
-    // "sqrt": "√",
-    // "factorial": '!'
   }
 
   this.switchNextOperation = function(operation) {
@@ -120,4 +118,4 @@ function Calc() {
   }
 }
 
-module.exports = new Calc();
+module.exports = Calc;

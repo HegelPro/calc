@@ -1,4 +1,10 @@
 require('bootstrap/dist/css/bootstrap.min.css');
-const Controller = require("./Controller");
+const classController = require("./Controller");
 
-Controller.start();
+
+var elementCalc = document.querySelector('#calc')
+const Controller = new classController(elementCalc);
+
+
+var elementCalc2 = document.querySelector('#calc2')
+const Controller2 = new classController(elementCalc2);

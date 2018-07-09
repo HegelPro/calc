@@ -1,5 +1,5 @@
-function Display() {
-  this.display = document.querySelector("#display");
+function Display(elementCalc) {
+  this.display = elementCalc.querySelector(".display");
 
   this.value = "0";
 
@@ -35,4 +35,4 @@ function Display() {
   }
 }
 
-module.exports = new Display();
+module.exports = Display;

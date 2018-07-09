@@ -3,10 +3,11 @@ const Display = require('./Calc/Display/Display')
 const History = require('./Calc/History/History')
 const Theme = require('./Calc/Theme/Theme')
 
-
-module.exports = {
-  keypad: Keypad,
-  display: Display,
-  history: History,
-  theme: Theme
+function View(elementCalc) {
+  this.keypad = new Keypad(elementCalc)
+  this.display = new Display(elementCalc)
+  this.history = new History(elementCalc)
+  this.theme = new Theme()
 };
+
+module.exports = View;

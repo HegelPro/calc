@@ -5,26 +5,38 @@ function Theme() {
   this.btnScientificTheme = document.querySelector("#theme-scientific-mode");
   this.btnNormalTheme = document.querySelector("#theme-normal-mode");
 
-  this.calc = document.querySelector(".calc");
+  this.calc = document.querySelectorAll(".calc");
   this.keypad = document.querySelectorAll(".calc__btn");
-  this.display = document.querySelector("#display");
-  this.list = document.querySelector(".calc__history");
-  this.btnReset = document.querySelector("#btn-reset");
+  this.display = document.querySelectorAll(".display");
+  this.list = document.querySelectorAll(".calc__history");
+  this.btnReset = document.querySelectorAll(".btn-reset");
 
 
   this.switchOnDark = function() {
-    this.display.className += " dark"
-    this.list.className += " dark"
-    this.calc.className += " dark"
+    this.display.forEach(element => {
+      element.className += " dark"
+    });   
+    this.list.forEach(element => {
+      element.className += " dark"
+    });   
+    this.calc.forEach(element => {
+      element.className += " dark"
+    });   
     this.keypad.forEach(element => {
       element.className += " dark"
     });    
   }
 
   this.switchOnLight = function() {
-    this.display.className = this.display.className.replace(" dark", '');
-    this.list.className = this.list.className.replace(" dark", '');
-    this.calc.className = this.calc.className.replace(" dark", '');
+    this.display.forEach(element => {
+      element.className = element.className.replace(" dark", '');
+    });
+    this.list.forEach(element => {
+      element.className = element.className.replace(" dark", '');
+    });
+    this.calc.forEach(element => {
+      element.className = element.className.replace(" dark", '');
+    });
     this.keypad.forEach(element => {
       element.className = element.className.replace(" dark", '');
     });
@@ -45,4 +57,4 @@ function Theme() {
   }
 }
 
-module.exports = new Theme();
+module.exports = Theme;

@@ -38,6 +38,8 @@ var clientConfig = (function webpackConfig() {
     new ExtractTextPlugin("styles.css")
   )
 
+  config.devtool = "source-map"
+
   return config;
 });
 

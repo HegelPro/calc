@@ -1,5 +1,5 @@
-function History() {
-  this.list = document.querySelector('#history');
+function History(elementCalc) {
+  this.list = elementCalc.querySelector('.history');
 
   this.addElem = function(reseltStr) {
     var newElement = document.createElement("li");
@@ -18,4 +18,4 @@ function History() {
   }
 }
 
-module.exports = new History()
+module.exports = History

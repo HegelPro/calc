@@ -1,34 +1,34 @@
-function Keypad() {
-  this.btnMinus = document.querySelector("#btn-minus");
-  this.btnPlus = document.querySelector("#btn-plus");
-  this.btnMult = document.querySelector("#btn-mult");
-  this.btnDivide = document.querySelector("#btn-divide");
+function Keypad(elementCalc) {
+  this.btnMinus = elementCalc.querySelector(".btn-minus");
+  this.btnPlus = elementCalc.querySelector(".btn-plus");
+  this.btnMult = elementCalc.querySelector(".btn-mult");
+  this.btnDivide = elementCalc.querySelector(".btn-divide");
 
-  this.btn0 = document.querySelector("#btn-0");
-  this.btn1 = document.querySelector("#btn-1");
-  this.btn2 = document.querySelector("#btn-2");
-  this.btn3 = document.querySelector("#btn-3");
-  this.btn4 = document.querySelector("#btn-4");
-  this.btn5 = document.querySelector("#btn-5");
-  this.btn6 = document.querySelector("#btn-6");
-  this.btn7 = document.querySelector("#btn-7");
-  this.btn8 = document.querySelector("#btn-8");
-  this.btn9 = document.querySelector("#btn-9");
-  this.btnDot = document.querySelector("#btn-dot");
-  this.btnPercent = document.querySelector("#btn-percent");
+  this.btn0 = elementCalc.querySelector(".btn-0");
+  this.btn1 = elementCalc.querySelector(".btn-1");
+  this.btn2 = elementCalc.querySelector(".btn-2");
+  this.btn3 = elementCalc.querySelector(".btn-3");
+  this.btn4 = elementCalc.querySelector(".btn-4");
+  this.btn5 = elementCalc.querySelector(".btn-5");
+  this.btn6 = elementCalc.querySelector(".btn-6");
+  this.btn7 = elementCalc.querySelector(".btn-7");
+  this.btn8 = elementCalc.querySelector(".btn-8");
+  this.btn9 = elementCalc.querySelector(".btn-9");
+  this.btnDot = elementCalc.querySelector(".btn-dot");
+  this.btnPercent = elementCalc.querySelector(".btn-percent");
 
-  this.btnEqually = document.querySelector("#btn-equally");
-  this.btnDelete = document.querySelector("#btn-delete");
-  this.btnReset = document.querySelector("#btn-reset");
+  this.btnEqually = elementCalc.querySelector(".btn-equally");
+  this.btnDelete = elementCalc.querySelector(".btn-delete");
+  this.btnReset = elementCalc.querySelector(".btn-reset");
 
-  this.btnPow = document.querySelector("#btn-pow");
-  this.btnLog = document.querySelector("#btn-log");
-  this.btnSqrtByBase = document.querySelector("#btn-sqrt-by-base");
+  this.btnPow = elementCalc.querySelector(".btn-pow");
+  this.btnLog = elementCalc.querySelector(".btn-log");
+  this.btnSqrtByBase = elementCalc.querySelector(".btn-sqrt-by-base");
 
-  this.btnSqrt = document.querySelector("#btn-sqrt");
-  this.btnFactorial = document.querySelector("#btn-factorial");
+  this.btnSqrt = elementCalc.querySelector(".btn-sqrt");
+  this.btnFactorial = elementCalc.querySelector(".btn-factorial");
 }
 
 
 
-module.exports = new Keypad()
+module.exports = Keypad
