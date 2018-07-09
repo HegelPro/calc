@@ -1,3 +1,4 @@
+// запоменает расположение всех кнопок калькулятора
 function Keypad(elementCalc) {
   this.btnMinus = elementCalc.querySelector(".btn-minus");
   this.btnPlus = elementCalc.querySelector(".btn-plus");

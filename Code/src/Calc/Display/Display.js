@@ -1,3 +1,4 @@
+// инпут калькулятора
 function Display(elementCalc) {
   this.display = elementCalc.querySelector(".display");
 
@@ -15,10 +16,12 @@ function Display(elementCalc) {
     return parseFloat(this.value);
   }
 
+// меняет значение инпута дисплей
   this.switchDisplay = function(calc) {
     this.display.value = calc.operationMap[calc.nextOperation.func] + " " + this.value;
   }
 
+// добавление значения в инпут
   this.addNumberDisplay = function(number, calc) {
     if(calc.nextOperation.used) {
       this.value = number
