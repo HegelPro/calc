@@ -2,11 +2,12 @@ const classModel = require('./Model.js');
 const classView = new require('./View.js');
 
 function Controller(elementCalc) {
-  const Model = new classModel();
-  const View = new classView(elementCalc);
+  const Model = new classModel(); // данные
+  const View = new classView(elementCalc);  // отображение данных
   
-  initEvents()
+  initEvents()  // запуск
 
+// функция иницилизации всех событий
   function initEvents() {
     addEventListenersToNumbers()
     addEventListenerToDelete()
@@ -17,6 +18,7 @@ function Controller(elementCalc) {
     addEventListenerToThemeBtns()
   }
 
+// действие для операций равенства
   function doOperation() {
     var pastResult = Model.calc.result
     var pastDisplay = View.display.value
@@ -41,7 +43,6 @@ function Controller(elementCalc) {
 
     View.history.addElem(pastResult + Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + '=' + Model.calc.result)
   }
-
   function doOperationWithPercent() {
     var pastResult = Model.calc.result
     var pastDisplay = View.display.value
@@ -57,7 +58,6 @@ function Controller(elementCalc) {
 
     View.history.addElem(pastResult + Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + '%' + '=' + Model.calc.result)
   }
-
   function doOperationWithSqrt() {
     Model.calc.result = View.display.value
     var pastDisplay = View.display.value
@@ -71,7 +71,6 @@ function Controller(elementCalc) {
 
     View.history.addElem('√' + pastDisplay + '=' + Model.calc.result)
   }
-
   function doOperationWithFactorial() {
     Model.calc.result = View.display.value
     var pastDisplay = View.display.value
@@ -86,14 +85,15 @@ function Controller(elementCalc) {
     View.history.addElem('!' + pastDisplay + '=' + Model.calc.result)
   }
 
+// функция для смены значения на дисплее
   function changeValue(btnValue) {
     View.display.addNumberDisplay(btnValue, Model.calc);
   }
 
+// дейсткие очистки данных
   function deleteDisplay() {
     View.display.deleteValue(Model.calc)
   }
-
   function resetValue() {
     View.history.addHr()
 
@@ -104,6 +104,7 @@ function Controller(elementCalc) {
     Model.calc.result = 0
   }
 
+// события работающие как равенство
   function addEventListenerToEqually() {
     View.keypad.btnEqually.addEventListener('click', doOperation)
     
@@ -114,18 +115,20 @@ function Controller(elementCalc) {
     View.keypad.btnFactorial.addEventListener('click', doOperationWithFactorial)
   }
 
+// события отчистки данных
   function addEventListenerToDelete() {
     View.keypad.btnDelete.addEventListener('click', deleteDisplay)
   }
-
   function addEventListenerToReset() {
     View.keypad.btnReset.addEventListener('click', resetValue)
   }
 
+// действие при вводе кнопками
   function addEventListenerToNumber(event) {
     changeValue(event.target.innerText)
   }
 
+// событие кнопок ввода
   function addEventListenersToNumbers() {
     for (let index = 0; index < 10; index++) {
       View.keypad['btn' + index.toString()].addEventListener('click', addEventListenerToNumber.bind(this))
@@ -134,6 +137,7 @@ function Controller(elementCalc) {
     View.keypad.btnDot.addEventListener('click', addEventListenerToNumber.bind(this))
   }
 
+// события операций
   function addEventListenersToOperators() {
     View.keypad.btnPlus.addEventListener('click', ()=>{
       if(Model.calc.nextOperation.func === 'start') Model.calc.result = Number(View.display.value)
@@ -185,6 +189,7 @@ function Controller(elementCalc) {
     })
   }
 
+// событие смены режимов калькуляторов
   function addEventListenerToThemeBtns() {
     View.theme.btnDarkTheme.addEventListener('click', (event)=>{
       View.theme.btnLightTheme.style.display = 'block';
