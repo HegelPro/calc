@@ -1,7 +1,6 @@
 const classModel = require('./Model.js');
 const classView = new require('./View.js');
 
-
 function Controller(elementCalc) {
   const Model = new classModel();
   const View = new classView(elementCalc);
@@ -216,6 +215,5 @@ function Controller(elementCalc) {
     });
   }
 };
-
 
 module.exports = Controller

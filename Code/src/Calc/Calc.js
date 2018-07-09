@@ -1,14 +1,15 @@
 function Calc() {
-  this.result = 0;
+  this.result = 0;  // изначальное значение
 
-  this.dotOn = false;
-  this.persentOn = false;
+  this.dotOn = false; // мод включеной точки
+  this.persentOn = false; // мод операкии с процентом
 
   this.nextOperation = {
-    func: "start",
+    func: "start",  // изначально нет никакой операции
     used: false
   }
 
+// Соотносит название операции со значком. Нужно для вывода
   this.operationMap = {
     "divide": "/",
     "mult": "*",
@@ -20,6 +21,7 @@ function Calc() {
     "log": "log"
   }
 
+// Нужна для запоменания следующей операции калькулятора
   this.switchNextOperation = function(operation) {
     if(operation === "start") {
       this.nextOperation = {
@@ -34,25 +36,7 @@ function Calc() {
     }
   }
 
-  this.countNumbersAfterDot = function(number) {
-    var counter = 0;
-
-    while (Math.floor(number).toFixed(10) !== number.toFixed(10)) {
-      number *= 10;
-      counter++;
-    }
-
-    return counter;
-  }
-
-  this.mult10 = function(number, times) {
-    for(let i = 0; i < times; i++) {
-      number *= 10;
-    }
-    
-    return number;
-  }
-
+// Все операции калькулятора. Есть некоторые операции работающие в режиме процента. После операции выполняется value.toFixed(10) 
   this.plus = function(n) {
     if(this.persentOn) n = ( this.result * parseFloat(n) / 100).toString();
    
