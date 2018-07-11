@@ -32,14 +32,14 @@ Visit your site for http://localhost:"out_port"
 
 ## Was using patterns
 
-# MVC - base stract of project
+### MVC - base stract of project
 
 ```
 -Controller.js
 -Model.js
 -View.js
 ```
-# Facade - all project create after command
+### Facade - all project create after command
 
 ```
 index.js
@@ -47,7 +47,7 @@ index.js
 new classController(elementCalc)
 ```
 
-# Module - Common.js
+### Module - Common.js
 
 
 ## Authors
