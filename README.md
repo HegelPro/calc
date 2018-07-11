@@ -30,6 +30,26 @@ docker run -p "out_port:server_port" "user_name/image_name"
 
 Visit your site for http://localhost:"out_port"
 
+## Was using patterns
+
+# MVC - base stract of project
+
+```
+-Controller.js
+-Model.js
+-View.js
+```
+# Facade - all project create after command
+
+```
+index.js
+
+new classController(elementCalc)
+```
+
+# Module - Common.js
+
+
 ## Authors
 
 * **Lev Palkin** - [HegelPro](https://github.com/HegelPro)
