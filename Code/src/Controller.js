@@ -1,224 +1,229 @@
-const classModel = require('./Model.js');
-const classView = new require('./View.js');
+const Model = require('./Model.js');
+const View = require('./View.js');
 
-function Controller(elementCalc) {
-  const Model = new classModel(); // данные
-  const View = new classView(elementCalc);  // отображение данных
-  
-  initEvents()  // запуск
-
-// функция иницилизации всех событий
-  function initEvents() {
-    addEventListenersToNumbers()
-    addEventListenerToDelete()
-    addEventListenerToReset()
-    addEventListenersToOperators()
-    addEventListenerToEqually()
-
-    addEventListenerToThemeBtns()
-  }
-
-// действие для операций равенства
-  function doOperation() {
-    var pastResult = Model.calc.result
-    var pastDisplay = View.display.value
-
-    Model.calc[Model.calc.nextOperation.func](View.display.value);
-
-    View.display.value = Model.calc.result
-    View.display.switchDisplay(Model.calc)
-
-    Model.calc.nextOperation.used = true
-
-    if(Model.calc.nextOperation.func === "sqrtByBase") {
-      View.history.addElem(pastDisplay + Model.calc.operationMap[Model.calc.nextOperation.func] + pastResult + '=' + Model.calc.result)
+class Controller {
+  constructor(elementCalc) {
+    const {calc} = new Model(); // данные
+    const {display, keypad, history, theme} = new View(elementCalc);  // отображение данных
     
-      return
-    }
-    if(Model.calc.nextOperation.func === "log") {
-      View.history.addElem(Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + '(' + pastResult + ')' + '=' + Model.calc.result)
-    
-      return
+    initEvents()  // запуск
+
+  // функция иницилизации всех событий
+    function initEvents() {
+      addEventListenersToNumbers()
+      addEventListenerToDelete()
+      addEventListenerToReset()
+      addEventListenersToOperators()
+      addEventListenerToEqually()
+
+      addEventListenerToThemeBtns()
+
+      addEventListenerToInversionBtn()    
     }
 
-    View.history.addElem(pastResult + Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + '=' + Model.calc.result)
-  }
-  function doOperationWithPercent() {
-    var pastResult = Model.calc.result
-    var pastDisplay = View.display.value
-
-    Model.calc.persentOn = true
-    Model.calc[Model.calc.nextOperation.func](View.display.value);
-    Model.calc.persentOn = false
-
-    View.display.value = Model.calc.result
-    View.display.switchDisplay(Model.calc)
-
-    Model.calc.nextOperation.used = true
-
-    View.history.addElem(pastResult + Model.calc.operationMap[Model.calc.nextOperation.func] + pastDisplay + '%' + '=' + Model.calc.result)
-  }
-  function doOperationWithSqrt() {
-    Model.calc.result = View.display.value
-    var pastDisplay = View.display.value
-
-    Model.calc['sqrt']();
-
-    View.display.value = Model.calc.result
-    View.display.switchDisplay(Model.calc)
-
-    Model.calc.nextOperation.used = true
-
-    View.history.addElem('√' + pastDisplay + '=' + Model.calc.result)
-  }
-  function doOperationWithFactorial() {
-    Model.calc.result = View.display.value
-    var pastDisplay = View.display.value
-
-    Model.calc['factorial'](View.display.value);
-
-    View.display.value = Model.calc.result
-    View.display.switchDisplay(Model.calc)
-
-    Model.calc.nextOperation.used = true
-
-    View.history.addElem('!' + pastDisplay + '=' + Model.calc.result)
-  }
-
-// функция для смены значения на дисплее
-  function changeValue(btnValue) {
-    View.display.addNumberDisplay(btnValue, Model.calc);
-  }
-
-// дейсткие очистки данных
-  function deleteDisplay() {
-    View.display.deleteValue(Model.calc)
-  }
-  function resetValue() {
-    View.history.addHr()
-
-    Model.calc.switchNextOperation('start')
-
-    View.display.deleteValue(Model.calc)
-
-    Model.calc.result = 0
-  }
-
-// события работающие как равенство
-  function addEventListenerToEqually() {
-    View.keypad.btnEqually.addEventListener('click', doOperation)
-    
-    View.keypad.btnPercent.addEventListener('click', doOperationWithPercent)
-    
-    View.keypad.btnSqrt.addEventListener('click', doOperationWithSqrt)
-
-    View.keypad.btnFactorial.addEventListener('click', doOperationWithFactorial)
-  }
-
-// события отчистки данных
-  function addEventListenerToDelete() {
-    View.keypad.btnDelete.addEventListener('click', deleteDisplay)
-  }
-  function addEventListenerToReset() {
-    View.keypad.btnReset.addEventListener('click', resetValue)
-  }
-
-// действие при вводе кнопками
-  function addEventListenerToNumber(event) {
-    changeValue(event.target.innerText)
-  }
-
-// событие кнопок ввода
-  function addEventListenersToNumbers() {
-    for (let index = 0; index < 10; index++) {
-      View.keypad['btn' + index.toString()].addEventListener('click', addEventListenerToNumber.bind(this))
-    }
-
-    View.keypad.btnDot.addEventListener('click', addEventListenerToNumber.bind(this))
-  }
-
-// события операций
-  function addEventListenersToOperators() {
-    View.keypad.btnPlus.addEventListener('click', ()=>{
-      if(Model.calc.nextOperation.func === 'start') Model.calc.result = Number(View.display.value)
-
-      Model.calc.switchNextOperation('plus')
-      View.display.switchDisplay(Model.calc)
-    })
-
-    View.keypad.btnMinus.addEventListener('click', ()=>{
-      if(Model.calc.nextOperation.func === 'start') Model.calc.result = Number(View.display.value)
-
-      Model.calc.switchNextOperation('minus')
-      View.display.switchDisplay(Model.calc)
-    })
-
-    View.keypad.btnMult.addEventListener('click', ()=>{
-      if(Model.calc.nextOperation.func === 'start') Model.calc.result = Number(View.display.value)
-
-      Model.calc.switchNextOperation('mult')
-      View.display.switchDisplay(Model.calc)
-    })
-
-    View.keypad.btnDivide.addEventListener('click', ()=>{
-      if(Model.calc.nextOperation.func === 'start') Model.calc.result = Number(View.display.value)
-
-      Model.calc.switchNextOperation('divide')
-      View.display.switchDisplay(Model.calc)
-    })
-
-    View.keypad.btnPow.addEventListener('click', ()=>{
-      if(Model.calc.nextOperation.func === 'start') Model.calc.result = Number(View.display.value)
-
-      Model.calc.switchNextOperation('pow')
-      View.display.switchDisplay(Model.calc)
-    })
-
-    View.keypad.btnSqrtByBase.addEventListener('click', ()=>{
-      if(Model.calc.nextOperation.func === 'start') Model.calc.result = Number(View.display.value)
-
-      Model.calc.switchNextOperation('sqrtByBase')
-      View.display.switchDisplay(Model.calc)
-    })
-
-    View.keypad.btnLog.addEventListener('click', ()=>{
-      if(Model.calc.nextOperation.func === 'start') Model.calc.result = Number(View.display.value)
+  // действия для операций равенства
+    function doOperation(equallyMode) {
       
-      Model.calc.switchNextOperation('log')
-      View.display.switchDisplay(Model.calc)
-    })
-  }
-
-// событие смены режимов калькуляторов
-  function addEventListenerToThemeBtns() {
-    View.theme.btnDarkTheme.addEventListener('click', (event)=>{
-      View.theme.btnLightTheme.style.display = 'block';
-      View.theme.btnDarkTheme.style.display = 'none';
-
-      View.theme.switchOnDark()
-    });
-
-    View.theme.btnLightTheme.addEventListener('click', (event)=>{
-      View.theme.btnLightTheme.style.display = 'none';
-      View.theme.btnDarkTheme.style.display = 'block';
+  // выполнение операции
+      if(equallyMode === 'sqrt') {  
+        calc.result = display.value
+        var pastDisplay = display.value
       
-      View.theme.switchOnLight()
-    });
+        calc['sqrt'](display.value)
+      } else if(equallyMode === 'factorial') {
+        calc.result = display.value
+        var pastDisplay = display.value
 
-    View.theme.btnScientificTheme.addEventListener('click', (event)=>{
-      View.theme.btnNormalTheme.style.display = 'block';
-      View.theme.btnScientificTheme.style.display = 'none';
+        calc['factorial'](display.value)
+      } else if(equallyMode === 'percent') {
+        var pastResult = calc.result
+        var pastDisplay = display.value
 
-      View.theme.switchOnScientific()
-    });
+        calc.persentOn = true
+        calc[calc.nextOperation.func](display.value);
+        calc.persentOn = false
+      } else {
+        var pastResult = calc.result
+        var pastDisplay = display.value
 
-    View.theme.btnNormalTheme.addEventListener('click', (event)=>{
-      View.theme.btnNormalTheme.style.display = 'none';
-      View.theme.btnScientificTheme.style.display = 'block';
+        calc[calc.nextOperation.func](display.value);
+      }
 
-      View.theme.switchOnNormal()
-    });
-  }
+  // запись значения импута в calc result
+      display.value = calc.result
+      display.switchDisplay(calc)
+
+  // для записи чисел при наборе клавиатувы
+      calc.nextOperation.used = true
+
+  // вывод истории
+      if(calc.nextOperation.func === "sqrtByBase") {
+        history.addElem(`${pastDisplay}${calc.operationMap[calc.nextOperation.func]}${pastResult}=${calc.result}`)
+      } else if(calc.nextOperation.func === "log") {
+        history.addElem(`${calc.operationMap[calc.nextOperation.func]}${pastDisplay}(${pastResult})=${calc.result}`)
+      } else if(equallyMode === 'sqrt') {
+        history.addElem(`√${pastDisplay}=${calc.result}`)
+      } else if(equallyMode === 'factorial') {
+        history.addElem(`!${pastDisplay}=${calc.result}`)
+      } else {
+        history.addElem(`${pastResult}${calc.operationMap[calc.nextOperation.func]}${pastDisplay}=${calc.result}`)
+      }
+    }
+
+  // функция для смены значения на дисплее
+    function changeValue(btnValue) {
+      display.addNumberDisplay(btnValue, calc);
+    }
+
+  // дейсткие очистки данных
+    function deleteDisplay() {
+      display.deleteValue(calc)
+    }
+
+    function resetValue() {
+      history.addHr()
+
+      calc.switchNextOperation('start')
+
+      display.deleteValue(calc)
+
+      calc.result = 0
+    }
+
+  // события работающие как равенство
+    function addEventListenerToEqually() {
+      keypad.btnEqually.addEventListener('click', () => { 
+        doOperation('equally')
+      })
+      
+      keypad.btnPercent.addEventListener('click', () => {
+        doOperation('percent')
+      })
+      
+      keypad.btnSqrt.addEventListener('click', () => {
+        doOperation('sqrt')
+      })
+
+      keypad.btnFactorial.addEventListener('click', () => {
+        doOperation('factorial')
+      })
+    }
+
+  // события отчистки данных
+    function addEventListenerToDelete() {
+      keypad.btnDelete.addEventListener('click', deleteDisplay)
+    }
+    function addEventListenerToReset() {
+      keypad.btnReset.addEventListener('click', resetValue)
+    }
+
+  // действие при вводе кнопками
+    function addEventListenerToNumber(event) {
+      changeValue(event.target.innerText)
+    }
+
+  // событие кнопок ввода
+    function addEventListenersToNumbers() {
+      for (let index = 0; index < 10; index++) {
+        keypad['btn' + index.toString()].addEventListener('click', addEventListenerToNumber.bind(this))
+      }
+
+      keypad.btnDot.addEventListener('click', addEventListenerToNumber.bind(this))
+    }
+
+  // события операций
+    function addEventListenersToOperators() {
+      keypad.btnPlus.addEventListener('click', ()=>{
+        if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
+
+        calc.switchNextOperation('plus')
+        display.switchDisplay(calc)
+      })
+
+      keypad.btnMinus.addEventListener('click', ()=>{
+        if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
+
+        calc.switchNextOperation('minus')
+        display.switchDisplay(calc)
+      })
+
+      keypad.btnMult.addEventListener('click', ()=>{
+        if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
+
+        calc.switchNextOperation('mult')
+        display.switchDisplay(calc)
+      })
+
+      keypad.btnDivide.addEventListener('click', ()=>{
+        if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
+
+        calc.switchNextOperation('divide')
+        display.switchDisplay(calc)
+      })
+
+      keypad.btnPow.addEventListener('click', ()=>{
+        if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
+
+        calc.switchNextOperation('pow')
+        display.switchDisplay(calc)
+      })
+
+      keypad.btnSqrtByBase.addEventListener('click', ()=>{
+        if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
+
+        calc.switchNextOperation('sqrtByBase')
+        display.switchDisplay(calc)
+      })
+
+      keypad.btnLog.addEventListener('click', ()=>{
+        if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
+        
+        calc.switchNextOperation('log')
+        display.switchDisplay(calc)
+      })
+    }
+
+    // Событие инверсия
+
+    function addEventListenerToInversionBtn() {
+      keypad.btnInversion.addEventListener('click', (event) => {
+        display.inversion(calc)
+      
+        calc.inversion()
+      })
+    }
+
+  // событие смены режимов калькуляторов
+    function addEventListenerToThemeBtns() {
+      theme.btnDarkTheme.addEventListener('click', (event)=>{
+        theme.btnLightTheme.style.display = 'block';
+        theme.btnDarkTheme.style.display = 'none';
+
+        theme.switchOnDark()
+      });
+
+      theme.btnLightTheme.addEventListener('click', (event)=>{
+        theme.btnLightTheme.style.display = 'none';
+        theme.btnDarkTheme.style.display = 'block';
+        
+        theme.switchOnLight()
+      });
+
+      theme.btnScientificTheme.addEventListener('click', (event)=>{
+        theme.btnNormalTheme.style.display = 'block';
+        theme.btnScientificTheme.style.display = 'none';
+
+        theme.switchOnScientific()
+      });
+
+      theme.btnNormalTheme.addEventListener('click', (event)=>{
+        theme.btnNormalTheme.style.display = 'none';
+        theme.btnScientificTheme.style.display = 'block';
+
+        theme.switchOnNormal()
+      });
+    }
+  }  
 };
 
 module.exports = Controller

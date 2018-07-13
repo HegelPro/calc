@@ -1,9 +1,11 @@
 // Выводит результаты операций
-function History(elementCalc) {
-  this.list = elementCalc.querySelector('.history');  // контейнер для вывода
+class History {
+  constructor(elementCalc) {
+    this.list = elementCalc.querySelector('.history');  // контейнер для вывода
+  }
 
 // добавляет елемент в историю
-  this.addElem = function(reseltStr) {
+  addElem(reseltStr) {
     var newElement = document.createElement("li");
 
     newElement.innerText = reseltStr;
@@ -12,7 +14,7 @@ function History(elementCalc) {
   }
 
 // для добавления прочерка
-  this.addHr = function() {
+  addHr() {
     var newElement = document.createElement("li");
     var hr = document.createElement('hr');
 

@@ -1,28 +1,30 @@
-function Calc() {
-  this.result = 0;  // изначальное значение
+class Calc {
+  constructor() {
+    this.result = 0;  // изначальное значение
 
-  this.dotOn = false; // мод включеной точки
-  this.persentOn = false; // мод операкии с процентом
+    this.dotOn = false; // мод включеной точки
+    this.persentOn = false; // мод операкии с процентом
 
-  this.nextOperation = {
-    func: "start",  // изначально нет никакой операции
-    used: false
+    this.nextOperation = {
+      func: "start",  // изначально нет никакой операции
+      used: false
+    }
+
+    // Соотносит название операции со значком. Нужно для вывода
+    this.operationMap = {
+      "divide": "/",
+      "mult": "*",
+      "plus": "+",
+      "minus": "-",
+      "start": "",
+      "pow": "^",
+      "sqrtByBase": "√",
+      "log": "log"
+    }
   }
 
-// Соотносит название операции со значком. Нужно для вывода
-  this.operationMap = {
-    "divide": "/",
-    "mult": "*",
-    "plus": "+",
-    "minus": "-",
-    "start": "",
-    "pow": "^",
-    "sqrtByBase": "√",
-    "log": "log"
-  }
-
-// Нужна для запоменания следующей операции калькулятора
-  this.switchNextOperation = function(operation) {
+  // Нужна для запоменания следующей операции калькулятора
+  switchNextOperation(operation) {
     if(operation === "start") {
       this.nextOperation = {
         func: operation,
@@ -37,21 +39,25 @@ function Calc() {
   }
 
 // Все операции калькулятора. Есть некоторые операции работающие в режиме процента. После операции выполняется value.toFixed(10) 
-  this.plus = function(n) {
+  inversion() {
+    this.result = -this.result
+  }
+
+  plus(n) {
     if(this.persentOn) n = ( this.result * parseFloat(n) / 100).toString();
    
     this.result = this.result + parseFloat(n);
     this.result = +this.result.toFixed(10)
   }
 
-  this.minus = function(n) {
+  minus(n) {
     if(this.persentOn) n = ( this.result * parseFloat(n) / 100).toString();
 
     this.result = this.result - parseFloat(n);
     this.result = +this.result.toFixed(10)
   }
 
-  this.divide = function(n) {
+  divide(n) {
     if(this.persentOn) {
       this.result = ( this.result / parseFloat(n) * 100).toString()
       return
@@ -61,7 +67,7 @@ function Calc() {
     this.result = +this.result.toFixed(10)
   }
 
-  this.mult = function(n) {
+  mult(n) {
     if(this.persentOn) {
       this.result = ( this.result * parseFloat(n) / 100).toString()
       
@@ -72,27 +78,27 @@ function Calc() {
     this.result = +this.result.toFixed(10)
   }
 
-  this.pow = function(n) {
+  pow(n) {
     this.result = Math.pow(this.result, parseFloat(n))
     this.result = +this.result.toFixed(10)
   }
 
-  this.sqrt = function() {
+  sqrt() {
     this.result = Math.sqrt(this.result)
     this.result = +this.result.toFixed(10)
   }
 
-  this.sqrtByBase = function(n) {
+  sqrtByBase(n) {
     this.result = Math.pow(this.result, 1/parseFloat(n))
     this.result = +this.result.toFixed(10)
   }
 
-  this.log = function(n) {
+  log(n) {
     this.result = Math.log(this.result) / Math.log(n);
     this.result = +this.result.toFixed(10)
   }
 
-  this.factorial = function(n) {
+  factorial(n) {
     var z = 1;
 
     for (let i = 1; i <= n; i++) z = z * i;

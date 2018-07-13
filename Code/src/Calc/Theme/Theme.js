@@ -1,18 +1,19 @@
-function Theme() {
-  this.btnDarkTheme = document.querySelector("#theme-dark");
-  this.btnLightTheme = document.querySelector("#theme-light");
+class Theme {
+  constructor() {
+    this.btnDarkTheme = document.querySelector("#theme-dark");
+    this.btnLightTheme = document.querySelector("#theme-light");
 
-  this.btnScientificTheme = document.querySelector("#theme-scientific-mode");
-  this.btnNormalTheme = document.querySelector("#theme-normal-mode");
+    this.btnScientificTheme = document.querySelector("#theme-scientific-mode");
+    this.btnNormalTheme = document.querySelector("#theme-normal-mode");
 
-  this.calc = document.querySelectorAll(".calc");
-  this.keypad = document.querySelectorAll(".calc__btn");
-  this.display = document.querySelectorAll(".display");
-  this.list = document.querySelectorAll(".calc__history");
-  this.btnReset = document.querySelectorAll(".btn-reset");
+    this.calc = document.querySelectorAll(".calc");
+    this.keypad = document.querySelectorAll(".calc__btn");
+    this.display = document.querySelectorAll(".display");
+    this.list = document.querySelectorAll(".calc__history");
+    this.btnReset = document.querySelectorAll(".btn-reset");
+  }
 
-
-  this.switchOnDark = function() {
+  switchOnDark() {
     this.display.forEach(element => {
       element.className += " dark"
     });   
@@ -27,7 +28,7 @@ function Theme() {
     });    
   }
 
-  this.switchOnLight = function() {
+  switchOnLight() {
     this.display.forEach(element => {
       element.className = element.className.replace(" dark", '');
     });
@@ -42,14 +43,14 @@ function Theme() {
     });
   }
 
-  this.switchOnScientific = function() {
+  switchOnScientific() {
     this.keypad.forEach(element => {
       element.className += " resize"
       element.style.display = "block"
     });   
   }
 
-  this.switchOnNormal = function() {
+  switchOnNormal() {
     this.keypad.forEach(element => {
       element.className = element.className.replace(" resize", '');
       element.style = "";
