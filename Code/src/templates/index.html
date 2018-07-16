@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
   <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-  <link rel="stylesheet" href="dist/styles.css">
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
 </head>
 <body>
+  <h1 class="webpack-mode"><%= htmlWebpackPlugin.options.h1 %></h1>
   <header class="header-custom">
     <div class="container">
       <div class="row d-flex justify-content-between align-items-center">
@@ -151,6 +151,6 @@
     </div>
   </footer>
 
-  <script src="dist/bundle.js"></script>
+  <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 </html>

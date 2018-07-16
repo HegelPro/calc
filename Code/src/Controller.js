@@ -56,6 +56,9 @@ class Controller {
   // для записи чисел при наборе клавиатувы
       calc.nextOperation.used = true
 
+  // для отключения режима точка
+      calc.dotOn = false
+
   // вывод истории
       if(calc.nextOperation.func === "sqrtByBase") {
         history.addElem(`${pastDisplay}${calc.operationMap[calc.nextOperation.func]}${pastResult}=${calc.result}`)
@@ -133,49 +136,49 @@ class Controller {
 
   // события операций
     function addEventListenersToOperators() {
-      keypad.btnPlus.addEventListener('click', ()=>{
+      keypad.btnPlus.addEventListener('click', () => {
         if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
 
         calc.switchNextOperation('plus')
         display.switchDisplay(calc)
       })
 
-      keypad.btnMinus.addEventListener('click', ()=>{
+      keypad.btnMinus.addEventListener('click', () => {
         if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
 
         calc.switchNextOperation('minus')
         display.switchDisplay(calc)
       })
 
-      keypad.btnMult.addEventListener('click', ()=>{
+      keypad.btnMult.addEventListener('click', () => {
         if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
 
         calc.switchNextOperation('mult')
         display.switchDisplay(calc)
       })
 
-      keypad.btnDivide.addEventListener('click', ()=>{
+      keypad.btnDivide.addEventListener('click', () => {
         if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
 
         calc.switchNextOperation('divide')
         display.switchDisplay(calc)
       })
 
-      keypad.btnPow.addEventListener('click', ()=>{
+      keypad.btnPow.addEventListener('click', () => {
         if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
 
         calc.switchNextOperation('pow')
         display.switchDisplay(calc)
       })
 
-      keypad.btnSqrtByBase.addEventListener('click', ()=>{
+      keypad.btnSqrtByBase.addEventListener('click', () => {
         if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
 
         calc.switchNextOperation('sqrtByBase')
         display.switchDisplay(calc)
       })
 
-      keypad.btnLog.addEventListener('click', ()=>{
+      keypad.btnLog.addEventListener('click', () => {
         if(calc.nextOperation.func === 'start') calc.result = Number(display.value)
         
         calc.switchNextOperation('log')
@@ -186,7 +189,7 @@ class Controller {
     // Событие инверсия
 
     function addEventListenerToInversionBtn() {
-      keypad.btnInversion.addEventListener('click', (event) => {
+      keypad.btnInversion.addEventListener('click', () => {
         display.inversion(calc)
       
         calc.inversion()
@@ -195,28 +198,28 @@ class Controller {
 
   // событие смены режимов калькуляторов
     function addEventListenerToThemeBtns() {
-      theme.btnDarkTheme.addEventListener('click', (event)=>{
+      theme.btnDarkTheme.addEventListener('click', () => {
         theme.btnLightTheme.style.display = 'block';
         theme.btnDarkTheme.style.display = 'none';
 
         theme.switchOnDark()
       });
 
-      theme.btnLightTheme.addEventListener('click', (event)=>{
+      theme.btnLightTheme.addEventListener('click', () => {
         theme.btnLightTheme.style.display = 'none';
         theme.btnDarkTheme.style.display = 'block';
         
         theme.switchOnLight()
       });
 
-      theme.btnScientificTheme.addEventListener('click', (event)=>{
+      theme.btnScientificTheme.addEventListener('click', () => {
         theme.btnNormalTheme.style.display = 'block';
         theme.btnScientificTheme.style.display = 'none';
 
         theme.switchOnScientific()
       });
 
-      theme.btnNormalTheme.addEventListener('click', (event)=>{
+      theme.btnNormalTheme.addEventListener('click', () => {
         theme.btnNormalTheme.style.display = 'none';
         theme.btnScientificTheme.style.display = 'block';
 

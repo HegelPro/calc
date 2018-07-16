@@ -1,7 +1,9 @@
-const classCalc = require('./Calc/Calc.js');
+const Calc = require('./Calc/Calc.js');
 
-function Model() {
-  this.calc = new classCalc()
+class Model {
+  constructor() {
+    this.calc = new Calc()
+  }
 }
 
 module.exports = Model

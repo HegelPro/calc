@@ -36,8 +36,16 @@ class Display {
       calc.nextOperation.used = false
     } else if (this.value === "0" && number === ".") {
       this.value = "0."
+
+      calc.dotOn = true
     } else if (this.value === "0") {
       this.value = number
+    } else if (number === "." && !calc.dotOn) {
+      this.value += "."
+      
+      calc.dotOn = true
+    }  else if (number === "." && calc.dotOn) {
+      
     } else {
       this.value += number
     }

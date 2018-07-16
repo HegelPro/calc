@@ -70,7 +70,6 @@ class Calc {
   mult(n) {
     if(this.persentOn) {
       this.result = ( this.result * parseFloat(n) / 100).toString()
-      
       return
     }
 

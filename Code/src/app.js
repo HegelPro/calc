@@ -1,8 +1,8 @@
 require('bootstrap/dist/css/bootstrap.min.css');
-const classController = require("./Controller");
+const Controller = require("./Controller");
 
 // инициализируем перный калькулятор
-new classController(document.querySelector('#calc'));
+new Controller(document.querySelector('#calc'));
 
 // инициализируем второй калькулятор
-new classController(document.querySelector('#calc2'));
+new Controller(document.querySelector('#calc2'));
