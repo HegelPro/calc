@@ -39,15 +39,25 @@ Visit your site for http://localhost:"out_port"
 -Model.js
 -View.js
 ```
-### Facade - all project create after command
+### Fabric - all project create after command
 
 ```
 index.js
 
-new classController(elementCalc)
+new Controller(elementCalc)
 ```
 
 ### Module - Common.js
+
+### EC-6 practices
+
+#### All hestiry rewrite with using template syntax
+
+For to make syntax more understandable
+
+#### Was used dectructuriezer in Controler.js
+
+For to make a code less than before
 
 
 ## Authors
