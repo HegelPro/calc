@@ -49,7 +49,7 @@ new Controller(elementCalc)
 
 ### Module - Common.js
 
-### EC-6 practices
+## EC-6 practices
 
 #### All hestiry was rewritten with using template syntax
 
