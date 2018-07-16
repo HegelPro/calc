@@ -51,7 +51,7 @@ new Controller(elementCalc)
 
 ### EC-6 practices
 
-#### All hestiry rewrite with using template syntax
+#### All hestiry was rewritten with using template syntax
 
 For to make syntax more understandable
 
