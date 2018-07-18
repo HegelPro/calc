@@ -1,6 +1,6 @@
-const Keypad = require('./Keypad/Keypad');
+const Keypad = require('./keypad/keypad');
 const Display = require('./display/display')
-const History = require('./History/History')
+const History = require('./history/history')
 const Theme = require('./Theme/Theme')
 
 class View {
