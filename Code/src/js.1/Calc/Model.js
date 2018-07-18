@@ -1,4 +1,4 @@
-const Calc = require('./Calc/Calc.js');
+const Calc = require('./Calc.js');
 
 class Model {
   constructor() {

@@ -1,7 +1,7 @@
-const Keypad = require('./Calc/Keypad/Keypad');
-const Display = require('./Calc/Display/Display')
-const History = require('./Calc/History/History')
-const Theme = require('./Calc/Theme/Theme')
+const Keypad = require('./Keypad/Keypad');
+const Display = require('./Display/Display')
+const History = require('./History/History')
+const Theme = require('./Theme/Theme')
 
 class View {
   constructor(elementCalc) {

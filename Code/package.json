@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build:prod": "webpack --config webpack.prod.js",
-    "start:dev": "webpack-dev-server --mode development",
+    "start:dev": "webpack-dev-server --config webpack.dev.js",
     "start:watch": "webpack --watch",
     "start:node": "node server.js",
     "prod": "webpack ",
@@ -35,5 +35,8 @@
     "webpack-dev-server": "^3.1.4",
     "webpack-md5-hash": "0.0.6"
   },
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "npm": "^6.2.0"
+  }
 }

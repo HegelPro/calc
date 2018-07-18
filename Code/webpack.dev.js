@@ -10,7 +10,7 @@ var clientConfig = (function webpackConfig() {
 
   config.mode = 'development';
 
-  config.entry = ['./src/app.js', './src/scss/main.scss'];
+  config.entry = ['./src/js/app.js', './src/scss/main.scss'];
 
   config.output = {
     path: path.resolve(__dirname, 'dist/dev'),
