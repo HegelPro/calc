@@ -1,8 +1,16 @@
-const Model = require('./model.js');
-const View = require('./view');
+import Model from './model.js'
+import View from './view'
+
+/**
+ * Управляющий файл. Организует взаимодействие между модулями Model и View
+ * @constructor
+ * @param {Object} Model - внутренее устройство калькулятора
+ * @param {Object} View - внешний вид калькулятора
+ */
 
 class Controller {
   constructor(elementCalc) {
+    var elementCalc = document.querySelector(elementCalc)
 
     const {} = new Model(); // данные
     const {display, keypad, history, theme} = new View(elementCalc);  // отображение данных
@@ -15,7 +23,8 @@ class Controller {
       
       addEventListenersToLeftOperRight()
       addEventListenersToOperRight()
-      
+      addEventListenersToLog()
+
       addEventListenerToEqually()
       
       addEventListenerToDelete()
@@ -23,6 +32,7 @@ class Controller {
 
       addEventListenerToBrackets()
       addEventListenerToDot()
+      addEventListenersToInvertion()
 
       addEventListenerToThemeBtns()
     }
@@ -47,6 +57,23 @@ class Controller {
       });
     }  
 
+    function inputLog(event) { // log()()
+      display.addSymbel(event.target.dataset.oper)
+    }
+
+    function addEventListenersToLog() {
+      keypad.btnLog.addEventListener('click', inputLog)
+    }  
+
+    function doInvertion(event) { // +/-
+      display.inverseLostNumber()
+    }
+
+    function addEventListenersToInvertion() {
+      keypad.btnInvertion.addEventListener('click', doInvertion)
+    }  
+
+
     function inputNumber(event) { //  [0-9]
       display.addSymbel(event.target.dataset.num)
     }
@@ -58,7 +85,9 @@ class Controller {
     }
 
     function doEqually() {  // '='
-      var reselt =  Model.solveExample(display.value)
+    display.setDefouldState()
+
+    var reselt =  Model.solveExample(display.value)
 
       history.addElem(display.value + '=' + reselt)
       
@@ -136,6 +165,7 @@ class Controller {
   }  
 };
 
-// console.log( Calculator.solveExample('2*(4+3)+!(1+2)') ); // exemple
+// console.log(Model.solveExample('3+log2\'4'));
 
-module.exports = Controller
+
+export default Controller

@@ -58,4 +58,4 @@ class Theme {
   }
 }
 
-module.exports = Theme;
+export default Theme;

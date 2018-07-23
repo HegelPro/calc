@@ -1,4 +1,4 @@
-const Operations = require("./operations")
+import Operations from "./operations"
 
 // this.operationHeavy = {
 //   "+": 1,
@@ -15,6 +15,30 @@ const Operations = require("./operations")
 
 class SyntaxAlalisator {
   constructor() {}
+
+  static rewrite(str) {
+    var lowerToUpper = {
+      '₀': '0',
+      '₁': '1',
+      '₂': '2',
+      '₃': '3', 
+      '₄': '4', 
+      '₅': '5', 
+      '₆': '6', 
+      '₇': '7', 
+      '₈': '8', 
+      '₉': '9'
+    }
+    
+
+    for (let index = 0; index < str.length; index++) {
+      if( str[index] === '-' && str[index + 1] === '-' ) str = str.replace('--', '+')
+      if( str[index] === '-' && /[0-9]/.test(str[index - 1]) ) str = str.replace('-', '+-')
+      if( /[₀-₉]/.test(str[index]) ) str = str.replace( str[index], lowerToUpper[ str[index]] + '\'' )
+    }
+
+    return str    
+  }
 
   static getValueRightOperation(strRight) {
     var right = strRight.match(/[-]?[0-9]*[.]?[0-9]+/)[0]
@@ -33,10 +57,15 @@ class SyntaxAlalisator {
     return [this.getValueLeftOperation(strLeft), this.getValueRightOperation(strRight)]
   }
   
-  
+  static getValuesOperationRightRight(strRight) {
+    var strRightRight = strRight.slice(strRight.indexOf('\''), strRight.length)
+
+    return [this.getValueRightOperation(strRight), this.getValueRightOperation(strRightRight)]
+  }
+
   static analysSyntaxLevelOne(str) {
     for(let charIndex = 0; charIndex < str.length; charIndex++) {
-      if (str[charIndex] === "+" ) {
+      if (str[charIndex] === "+") {
         let [left, right] = this.getValuesAroundOperation(str.slice(0, charIndex), str.slice(charIndex + 1, str.length));
         
         str = str.replace(left + str[charIndex] + right, Operations[ Operations.antiOperationMap[str[charIndex]]](left, right) );
@@ -85,7 +114,16 @@ class SyntaxAlalisator {
   
   static analysSyntaxLevelFive(str) {
     for(let charIndex = 0; charIndex < str.length; charIndex++) {
-      if (str[charIndex] === "!" || str[charIndex] === "√" ) {  // without logNum1(num2)
+      if (str[charIndex] === "!" || str[charIndex] === "√" || str[charIndex] === "l") {  // without logNum1(num2)
+        if(str[charIndex] === "l" ) {
+          let [right, rightRight] = this.getValuesOperationRightRight(str.slice(charIndex + 1, str.length));
+
+          console.log(str.slice('log' + right + '\'' + rightRight)); // TODO i should to add indexOf
+          str = str.replace( str.slice('log' + right + '\'' + rightRight), Operations.log(right, rightRight) )
+          console.log(str); 
+
+          return str
+        }
         let right = this.getValueRightOperation(str.slice(charIndex + 1, str.length));
         
         if(str[charIndex] === "√") str = str.replace(str[charIndex] + right, Operations.sqrt(right) )
@@ -98,7 +136,7 @@ class SyntaxAlalisator {
   
   static analysSyntaxLevelSix(str) {
     for(let charIndex = 0; charIndex < str.length; charIndex++) {
-      if (str[charIndex] === "(") {
+      if (/\(/.test(str) && /\)/.test(str) && str[charIndex] === "(") {
         str = str.replace( str.slice(charIndex, str.indexOf(")") + 1), this.analysSyntax( str.slice(charIndex + 1, str.indexOf(")") )) )
       }
     }
@@ -106,17 +144,13 @@ class SyntaxAlalisator {
     return str
   }
   
-  
   static analysSyntax(str) {
+    str = this.rewrite(str)
+
     return this.analysSyntaxLevelOne( this.analysSyntaxLevelTwo( this.analysSyntaxLevelThree( this.analysSyntaxLevelFour( this.analysSyntaxLevelFive( this.analysSyntaxLevelSix(str) )))))
   }
-  
-  // var str = ""
-  
-  // console.log( analysSyntax(str) );
-
 }
 
 
-module.exports = SyntaxAlalisator
+export default SyntaxAlalisator
 

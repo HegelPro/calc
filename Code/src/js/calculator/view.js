@@ -1,7 +1,7 @@
-const Keypad = require('./keypad/keypad');
-const Display = require('./display/display')
-const History = require('./history/history')
-const Theme = require('./Theme/Theme')
+import Keypad from './keypad/keypad'
+import Display from './display/display'
+import History from './history/history'
+import Theme from './theme/theme'
 
 class View {
   constructor(elementCalc) {
@@ -12,4 +12,4 @@ class View {
   }
 };
 
-module.exports = View;
+export default View;

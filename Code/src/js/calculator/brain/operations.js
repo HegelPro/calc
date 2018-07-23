@@ -89,9 +89,9 @@ class Operations {
     return +right.toFixed(10)
   }
 
-  static log(left) {
-    right = Math.log(right) / Math.log(left);
-    return +right.toFixed(10)
+  static log(right, rightRight) {
+    rightRight = Math.log(rightRight) / Math.log(right);
+    return +rightRight.toFixed(10)
   }
 
   static factorial(right) {

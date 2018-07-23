@@ -1,4 +1,4 @@
-const SyntaxAlalisator = require("./brain/syntax-alalisator")
+import SyntaxAlalisator from "./brain/syntax-alalisator"
 
 class Model {
   constructor() {}
@@ -8,4 +8,4 @@ class Model {
   }
 }
 
-module.exports = Model
+export default Model
