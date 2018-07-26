@@ -1,4 +1,8 @@
-// запоменает расположение всех кнопок калькулятора
+/**
+ * Запоменает расположение всех кнопок калькулятора
+ * 
+ * @class Keypad
+ */
 class Keypad {
   constructor(elementCalc) {
     this.btnsNum = elementCalc.querySelectorAll(".btn-num");

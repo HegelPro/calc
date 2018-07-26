@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build:dev": "webpack --config webpack.dev.js",
     "build:prod": "webpack --config webpack.prod.js",
     "start:dev": "webpack-dev-server --config webpack.dev.js",
     "start:watch": "webpack --watch",
-    "start:node": "node server.js",
-    "prod": "webpack ",
-    "dev": "webpack --config webpack.dev.js"
+    "start:node": "node ../node/server.js",
+    "prod": "webpack "
   },
   "author": "",
   "license": "ISC",

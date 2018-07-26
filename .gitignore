@@ -1,5 +1,9 @@
-Code/node_modules/
+code/node_modules/
 
-Code/package-lock.json
+code/package-lock.json
+
+node/node_modules/
+
+node/package-lock.json
 
 .vscode/

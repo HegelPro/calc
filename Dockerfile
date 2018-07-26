@@ -6,9 +6,9 @@ RUN apt-get update \
     && apt-get install -y nodejs \
     && apt-get install -y npm
 
-ADD /Code /Code
+ADD /code /code
 
-WORKDIR /Code
+WORKDIR /code
 RUN npm install
 
 EXPOSE 8080

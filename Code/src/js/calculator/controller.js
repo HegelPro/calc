@@ -1,5 +1,7 @@
 import Model from './model.js'
 import View from './view'
+import WebSocketSender from './brain/web-socket-sender'
+// import AdderEvents from './brain/adder-events'
 
 /**
  * Управляющий файл. Организует взаимодействие между модулями Model и View
@@ -35,6 +37,8 @@ class Controller {
       addEventListenersToInvertion()
 
       addEventListenerToThemeBtns()
+
+      new WebSocketSender(elementCalc, display)
     }
 
     function inputLeftOperRight(event) {  // [0-9]oper[0-9]

@@ -47,7 +47,14 @@ index.js
 new Controller(elementCalc)
 ```
 
-### Module - Common.js
+### Module - all project have separated to independent modules with private metheds and properties
+
+```
+import ... from '...'
+
+export defauld ...
+```
+
 
 ## EC-6 practices
 
@@ -59,6 +66,14 @@ For to make syntax more understandable
 
 For to make a code less than before
 
+## WebSocketServer
+
+#### For started
+
+You should enter into code folder after that type this command in console
+```
+npm run start:node
+```
 
 ## Authors
 
