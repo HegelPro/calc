@@ -13,7 +13,7 @@ class Model {
    * @param {String} str - пример
    */
   static solveExample(str) {
-    return SyntaxAnalisator.analysSyntax(str)
+    return (new SyntaxAnalisator).analysSyntax(str)
   }
 }
 

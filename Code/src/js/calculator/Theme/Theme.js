@@ -1,3 +1,7 @@
+/**
+ * @class Theme - цель класса менять вид калькулятора
+ * 
+ */
 class Theme {
   constructor() {
     this.btnDarkTheme = document.querySelector("#theme-dark");

@@ -1,5 +1,11 @@
-// Выводит результаты операций
+/**
+ * @class History - Выводит результаты операций
+ */ 
 class History {
+  /**
+   * @constructor
+   * @param {String} elementCalc - ip элемента калькулятор
+   */
   constructor(elementCalc) {
     this.list = elementCalc.querySelector('.history');  // контейнер для вывода
 

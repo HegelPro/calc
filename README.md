@@ -47,12 +47,12 @@ index.js
 new Controller(elementCalc)
 ```
 
-### Module - all project have separated to independent modules with private metheds and properties
+### Decorator - used for wrapping function and add to it something
 
 ```
-import ... from '...'
+decorator.js
 
-export defauld ...
+
 ```
 
 

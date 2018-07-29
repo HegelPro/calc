@@ -27,21 +27,21 @@ var clientConfig = (function webpackConfig() {
           },
         exclude: /node_modules/
       },
-      // {
-      //   test: /\.css$/,
-      //   use: ExtractTextPlugin.extract({
-      //     fallback: "style-loader",
-      //     use: "css-loader"
-      //   })
-      // },
-      // {
-      //   test: /\.scss$/,
-      //   use: ExtractTextPlugin.extract(
-      //     {
-      //       fallback: 'style-loader',
-      //       use: ['css-loader', 'sass-loader']
-      //     })
-      // }
+      /*{
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract(
+          {
+            fallback: 'style-loader',
+            use: ['css-loader', 'sass-loader']
+          })
+      }*/
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
@@ -76,13 +76,13 @@ var clientConfig = (function webpackConfig() {
     new CleanWebpackPlugin('dist/dev', {} )
   )
 
-  // config.plugins.push(
-  //   new ExtractTextPlugin({
-  //     filename: 'style.[hash].css',
-  //     disable: false,
-  //     allChunks: true
-  //   })
-  // )
+  /*config.plugins.push(
+    new ExtractTextPlugin({
+      filename: 'style.[hash].css',
+      disable: false,
+      allChunks: true
+    })
+  )*/
 
   config.plugins.push(
     new MiniCssExtractPlugin({

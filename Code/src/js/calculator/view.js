@@ -1,8 +1,6 @@
 import Keypad from './keypad/keypad'
 import Display from './display/display'
 import History from './history/history'
-import Theme from './theme/theme'
-
 
 /**
  * Внешняя структура калькулятора
@@ -29,12 +27,6 @@ class View {
      * @public
      */
     this.history = new History(elementCalc)
-    /**
-     * Иницилизация возможности переключать тему
-     * 
-     * @public
-     */
-    this.theme = new Theme() 
   }
 };
 

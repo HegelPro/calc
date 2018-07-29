@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Controller from "./calculator/controller"
+import Controller from "./calculator/calculator.controller"
 
 /**
  * Запуск приложения
