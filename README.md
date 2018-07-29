@@ -51,8 +51,6 @@ new Controller(elementCalc)
 
 ```
 decorator.js
-
-
 ```
 
 

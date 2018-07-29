@@ -6,32 +6,24 @@ import Theme from './theme'
 function themeSwitcher() {
   const theme = new Theme()
 
-  theme.btnDarkTheme.addEventListener('click', () => {
-    theme.btnLightTheme.style.display = 'block';
-    theme.btnDarkTheme.style.display = 'none';
-
-    theme.switchOnDark()
+  theme.btnThemeColor.addEventListener('click', (event) => {
+    if(event.target.innerText === "Dark") {
+      theme.switchOnDark()
+      event.target.innerText = "Light"
+    } else {
+      theme.switchOnLight()
+      event.target.innerText = "Dark"
+    }
   });
 
-  theme.btnLightTheme.addEventListener('click', () => {
-    theme.btnLightTheme.style.display = 'none';
-    theme.btnDarkTheme.style.display = 'block';
-    
-    theme.switchOnLight()
-  });
-
-  theme.btnScientificTheme.addEventListener('click', () => {
-    theme.btnNormalTheme.style.display = 'block';
-    theme.btnScientificTheme.style.display = 'none';
-
-    theme.switchOnScientific()
-  });
-
-  theme.btnNormalTheme.addEventListener('click', () => {
-    theme.btnNormalTheme.style.display = 'none';
-    theme.btnScientificTheme.style.display = 'block';
-
-    theme.switchOnNormal()
+  theme.btnThemeMode.addEventListener('click', () => {
+    if(event.target.innerText === "Scientific") {
+      theme.switchOnScientific()
+      event.target.innerText = "Normal"
+    } else {
+      theme.switchOnNormal()
+      event.target.innerText = "Scientific"
+    }
   });
 }
 

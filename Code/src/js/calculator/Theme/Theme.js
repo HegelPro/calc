@@ -4,11 +4,9 @@
  */
 class Theme {
   constructor() {
-    this.btnDarkTheme = document.querySelector("#theme-dark");
-    this.btnLightTheme = document.querySelector("#theme-light");
+    this.btnThemeColor = document.querySelector("#theme-color");
 
-    this.btnScientificTheme = document.querySelector("#theme-scientific-mode");
-    this.btnNormalTheme = document.querySelector("#theme-normal-mode");
+    this.btnThemeMode = document.querySelector("#theme-mode");
 
     this.calc = document.querySelectorAll(".calc");
     this.keypad = document.querySelectorAll(".calc__btn");
