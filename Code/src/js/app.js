@@ -7,4 +7,4 @@ import Controller from "./calculator/calculator.controller"
 new Controller('#calc');
 
 // инициализируем второй калькулятор
-// new Controller(document.querySelector('#calc2'));
+// new Controller(document.querySelector('#calc2'))
