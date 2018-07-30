@@ -8,8 +8,8 @@ function geterNumber() {
 
   return {
     getValueRightOperation(strRight) {
-      var right = strRight.match(number)[0] || []
-        
+      var right = strRight.match(number)[0]
+      
       return right
     },
     
